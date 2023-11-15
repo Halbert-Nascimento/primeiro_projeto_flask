@@ -1,0 +1,32 @@
+<!-- login.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L_ogin</title>
+</head>
+
+<body>
+  <h2>Login</h2>
+  <!-- {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <ul>
+    {% for message in messages %}
+    {{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %} -->
+  <form method="POST">
+    <label for="email">Email:</label>
+    <input type="email" name="email" required>
+    <label for="senha">Senha:</label>
+    <input type="password" name="senha" required>
+    <input type="submit" value="Login">
+  </form>
+</body>
+
+</html>

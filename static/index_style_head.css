@@ -1,0 +1,61 @@
+header {
+  width: 1000px;
+  margin: 0 auto;
+}
+#nome_logo {
+  font-size: 45px;
+  color: #436b1f4d;
+  font-family: Newsreader, "Times New Roman", Georgia, Palatino;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav a {
+  margin: 0 20px;
+  /* padding: 0 20px; */
+  font-size: 18px;
+  color: #000000;
+}
+nav a:hover {
+  color: #2ad02c;
+}
+nav .button_verde:hover {
+  background: #2ad02c;
+  color: #ffffff;
+}
+
+.banner {
+  width: 1000px;
+  height: 160px;
+  background: #2ad02c;
+  text-align: center;
+  border-radius: 24px;
+  margin: 20px 0;
+}
+.pesquisa {
+  display: flex;
+  height: 80px;
+  background: #fafaf5;
+  justify-content: center;
+  align-items: center;
+  justify-content: end;
+  gap: 30px;
+}
+.pesquisa a {
+  padding: 20px;
+  font-size: 12px;
+}
+#pesquisar {
+  background: #b2b2b2;
+  padding: 5px 100px;
+  border-radius: 10px;
+}
+
+footer {
+  margin-top: 20px;
+  height: 200px;
+  background: #d8d8d2;
+}

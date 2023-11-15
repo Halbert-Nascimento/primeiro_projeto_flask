@@ -1,0 +1,66 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Usuario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
+
+</head>
+
+<body>
+  <header>
+    <div class="top">
+      <a href="index2.html">
+        <h1 id="nome_logo">EcoSwap</h1>
+      </a>
+      <nav>
+        <a href="">Preservação</a>
+        <a href="">Reciclagem</a>
+        <a href="">Sobre</a>
+        <a href="/adicionar_usuario">ADC User</a>
+        <a href="/">Login</a>
+        <a class="button_verde" href="cadastro_produto.html">Registrar</a>
+      </nav>
+    </div>
+
+    <div class="banner">
+      <img src="/static/imagens/pag/logo banner.png" alt="EcoSwap">
+    </div>
+
+    <div class="pesquisa">
+      <a id="pesquisar">Pesquisar</a>
+      <a id="Classificar">Classificar</a>
+      <a id="agrupar">Agrupar</a>
+    </div>
+
+  </header>
+  <h2>Editar Usuário</h2>
+
+  <!-- <form action="POST" enctype="multipart/form-data"> -->
+  <form method="POST" enctype="multipart/form-data">
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" value="{{usuario[1]}} " required><br>
+
+    <label for="email">Email:</label>
+    <input type="text" name="email" value="{{usuario[2]}} " required><br>
+
+    <label for="senha">Senha:</label>
+    <input type="text" name="senha" value="{{usuario[3]}} " required><br>
+
+    <label for="imagem">Ate 3 imagens</label>
+    <input type="file" name="imagem" accept="imagem/*" multiple><br><br>
+
+    <input type="submit" value="Alterar informações">
+
+  </form>
+
+
+</body>
+
+</html>
