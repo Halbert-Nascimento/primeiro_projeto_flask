@@ -1,7 +1,6 @@
 # primeiro_projeto_flask
 
-<!--
-comando git
+# comando git
 
 Certamente, aqui estão alguns comandos Git úteis para consulta futura, cada um com uma breve explicação de uma linha:
 
@@ -23,9 +22,11 @@ git checkout [branch]: Muda para a branch especificada.
 
 git merge [branch]: Combina as alterações da branch especificada na branch atual.
 
-git status: Exibe o estado atual do seu repositório, incluindo arquivos modificados e pendentes. -->
+git status: Exibe o estado atual do seu repositório, incluindo arquivos modificados e pendentes.
 
-<!-- 1. `python -m venv nome_do_ambiente`: Cria um novo ambiente virtual com o nome especificado.
+# comando para anbiente virtual python venv
+
+1. `python -m venv nome_do_ambiente`: Cria um novo ambiente virtual com o nome especificado.
 
 2. `source nome_do_ambiente/bin/activate` (Linux/Mac) ou `
 nome_do_ambiente\Scripts\activate` (Windows): Ativa o ambiente virtual.
@@ -40,4 +41,4 @@ nome_do_ambiente\Scripts\activate` (Windows): Ativa o ambiente virtual.
 
 7. `pip list`: Lista os pacotes instalados no ambiente virtual.
 
-8. `python -m venv --clear nome_do_ambiente`: Cria um ambiente virtual limpo, removendo pacotes existentes. -->
+8. `python -m venv --clear nome_do_ambiente`: Cria um ambiente virtual limpo, removendo pacotes existentes.
