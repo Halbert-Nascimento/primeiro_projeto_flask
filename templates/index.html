@@ -16,16 +16,16 @@
 <body>
   <header>
     <div class="top">
-      <a href="index2.html">
+      <a href="/">
         <h1 id="nome_logo">EcoSwap</h1>
       </a>
       <nav>
         <a href="">Preservação</a>
-        <a href="">Reciclagem</a>
+        <!-- <a href="">Reciclagem</a> -->
         <a href="">Sobre</a>
-        <a href="/adicionar_usuario">ADC User</a>
+        <a href="perfil">Perfil</a>
         <a href="/login">Login</a>
-        <a class="button_verde" href="cadastro_produto.html">Registrar</a>
+        <a class="button_verde" href="cadastrar_usuario">{{registrar}}</a>
       </nav>
     </div>
 
@@ -41,15 +41,25 @@
 
   </header>
 
-  <h1>Minha Página Flask</h1>
+  <h1 style="text-align: center;">Minha Página Flask</h1>
   <p>{{ mensagem }}</p>
-
-  <a href="/usuario">Usuarios cadastrado no DB</a><br>
-  <a href="/adicionar_usuario">Cadastar novos usuarios</a><br>
-  <a href="/editar_usuario/2">Editar usuario</a><br>
-  <a href="excluir_usuario/5">excluir_usuario</a><br>
-  <a href="login">Login</a><br>
-  <a href="perfil">Perfil</a>
+  <h2>Lista de Produtos</h2>
+  {% if produtos %}
+  <ul>
+    {% for produto in produtos %}
+    <li>
+      <strong>{{ produto.nome_produto }}</strong><br>
+      Tipo: <strong>{{ produto.tipo_produto }}</strong><br>
+      Descrição: {{ produto.descricao_produto }}<br>
+      Imagem-1: <img width="100px" src="{{ produto.imagem1 }}" alt="Imagem 1"><br>
+      Imagem-2: <img width="100px" src="{{ produto.imagem2 }}" alt="Imagem 2"><br>
+      Imagem-3: <img width="100px" src="{{ produto.imagem3 }}" alt="Imagem 3"><br>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>Nenhum produto cadastrado.</p>
+  {% endif %}
 </body>
 
 </html>

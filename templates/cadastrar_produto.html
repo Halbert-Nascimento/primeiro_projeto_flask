@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>EcoSwap</title>
+  <title>ADC-USER__EcoSwap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
@@ -21,11 +21,11 @@
       </a>
       <nav>
         <a href="">Preservação</a>
-        <a href="cadastro_produto.html">Cadastrar Produto</a>
+        <a href="">Reciclagem</a>
         <a href="">Sobre</a>
         <a href="/">Home</a>
         <a href="{{ url_for('logout') }}">Logout</a>
-        <a class="button_verde" href="cadastrar_produto">{{ usuario.nome }}</a>
+        <a class="button_verde" href="perfil.html">{{ usuario.nome }}</a>
       </nav>
     </div>
 
@@ -40,12 +40,31 @@
     </div>
 
   </header>
-  <h2>Perfil de {{ usuario.nome }}</h2>
-  <p>Email: {{ usuario.email }}</p>
-  <p>Senha: {{ usuario.senha }}</p>
-  <p>Telefone: {{usuario.telefone}}</p>
-  <a href="/produtos">Produtos</a> |
-  <a href="{{ url_for('logout') }}">Logout</a>
+
+  <h2>Adicionar Produto</h2>
+  <form method="POST" action="{{ url_for('cadastrar_produto') }}" enctype="multipart/form-data">
+    <label for="nome_produto">Nome do Produto:</label>
+    <input type="text" name="nome_produto" required><br><br>
+
+    <label for="tipo_produto">Doação/Troca:</label>
+    <input type="text" name="tipo_produto" required><br><br>
+
+    <label for="descricao_produto">Descrição do Produto:</label>
+    <input type="text" name="descricao_produto" required><br><br>
+
+    <label for="imagem1">Imagem-1:</label>
+    <input type="file" name="imagem1" required><br><br>
+
+    <label for="imagem2">Imagem-2:</label>
+    <input type="file" name="imagem2" required><br><br>
+
+    <label for="imagem3">Imagem-3:</label>
+    <input type="file" name="imagem3" required><br><br>
+
+    <input type="submit" value="Cadastrar Produto"><br>
+  </form>
+
+
 
 
 

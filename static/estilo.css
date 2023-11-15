@@ -1,9 +1,55 @@
 /* estilo.css */
+
 body {
-  background-color: #f0f0f0;
   font-family: Arial, sans-serif;
+  margin: 20px;
 }
 
-h1 {
-  color: #912c2c;
+h2 {
+  color: #333;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.flash {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8d7da;
+  color: #721c24;
 }

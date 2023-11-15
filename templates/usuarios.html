@@ -10,21 +10,24 @@
 </head>
 
 <body>
-  <h2>Lista de Usuários</h2>
+  <!-- usuarios.html -->
 
-  {% if current_user.is_authenticated %}
-  <p>Bem-vindo, {{ current_user.nome }}! <a href="{{ url_for('perfil') }}">Ver Perfil</a> | <a href="{{ url_for('logout') }}">Logout</a></p>
-  {% else %}
-  <p><a href="{{ url_for('login') }}">Login</a></p>
-  {% endif %}
+  <!-- ... (Código anterior) -->
 
-  <!-- Adicione sua tabela de usuários aqui -->
+  <h3>Lista de Usuários</h3>
+
+  <!-- Adicione um link para a página de cadastro -->
+  <a href="{{ url_for('cadastrar_usuario') }}">Cadastrar Novo Usuário</a>
+
   <table>
     <thead>
       <tr>
         <th>ID</th>
         <th>Nome</th>
         <th>Email</th>
+        {% if current_user.is_authenticated %}
+        <th>Ações</th>
+        {% endif %}
       </tr>
     </thead>
     <tbody>
@@ -33,10 +36,14 @@
         <td>{{ usuario.id }}</td>
         <td>{{ usuario.nome }}</td>
         <td>{{ usuario.email }}</td>
+        {% if current_user.is_authenticated %}
+        <td><a href="{{ url_for('editar_usuario', id=usuario.id) }}">Editar</a> | <a href="{{ url_for('excluir_usuario', id=usuario.id) }}">Excluir</a></td>
+        {% endif %}
       </tr>
       {% endfor %}
     </tbody>
   </table>
+
 </body>
 
 </html>

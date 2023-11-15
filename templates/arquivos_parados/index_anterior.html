@@ -21,11 +21,11 @@
       </a>
       <nav>
         <a href="">Preservação</a>
-        <a href="cadastro_produto.html">Cadastrar Produto</a>
+        <a href="">Reciclagem</a>
         <a href="">Sobre</a>
-        <a href="/">Home</a>
-        <a href="{{ url_for('logout') }}">Logout</a>
-        <a class="button_verde" href="cadastrar_produto">{{ usuario.nome }}</a>
+        <a href="/adicionar_usuario">ADC User</a>
+        <a href="/login">Login</a>
+        <a class="button_verde" href="cadastro_produto.html">Registrar</a>
       </nav>
     </div>
 
@@ -40,15 +40,16 @@
     </div>
 
   </header>
-  <h2>Perfil de {{ usuario.nome }}</h2>
-  <p>Email: {{ usuario.email }}</p>
-  <p>Senha: {{ usuario.senha }}</p>
-  <p>Telefone: {{usuario.telefone}}</p>
-  <a href="/produtos">Produtos</a> |
-  <a href="{{ url_for('logout') }}">Logout</a>
 
+  <h1>Minha Página Flask</h1>
+  <p>{{ mensagem }}</p>
 
-
+  <a href="/usuario">Usuarios cadastrado no DB</a><br>
+  <a href="/adicionar_usuario">Cadastar novos usuarios</a><br>
+  <a href="/editar_usuario/2">Editar usuario</a><br>
+  <a href="excluir_usuario/5">excluir_usuario</a><br>
+  <a href="login">Login</a><br>
+  <a href="perfil">Perfil</a>
 </body>
 
 </html>

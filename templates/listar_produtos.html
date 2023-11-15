@@ -40,15 +40,23 @@
     </div>
 
   </header>
-  <h2>Perfil de {{ usuario.nome }}</h2>
-  <p>Email: {{ usuario.email }}</p>
-  <p>Senha: {{ usuario.senha }}</p>
-  <p>Telefone: {{usuario.telefone}}</p>
-  <a href="/produtos">Produtos</a> |
-  <a href="{{ url_for('logout') }}">Logout</a>
-
-
-
+  <h2>Lista de Produtos</h2>
+  {% if produtos %}
+  <ul>
+    {% for produto in produtos %}
+    <li>
+      <strong>{{ produto.nome_produto }}</strong><br>
+      Tipo: <strong>{{ produto.tipo_produto }}</strong><br>
+      Descrição: {{ produto.descricao_produto }}<br>
+      Imagem-1: <img width="100px" src="{{ produto.imagem1 }}" alt="Imagem 1"><br>
+      Imagem-2: <img width="100px" src="{{ produto.imagem2 }}" alt="Imagem 2"><br>
+      Imagem-3: <img width="100px" src="{{ produto.imagem3 }}" alt="Imagem 3"><br>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>Nenhum produto cadastrado.</p>
+  {% endif %}
 </body>
 
 </html>
