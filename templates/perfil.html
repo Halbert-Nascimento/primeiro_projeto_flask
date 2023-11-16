@@ -20,10 +20,9 @@
         <h1 id="nome_logo">EcoSwap</h1>
       </a>
       <nav>
-        <a href="">Preservação</a>
-        <a href="cadastro_produto.html">Cadastrar Produto</a>
-        <a href="">Sobre</a>
         <a href="/">Home</a>
+        <a href="">Preservação</a>
+        <a href="">Sobre</a>
         <a href="{{ url_for('logout') }}">Logout</a>
         <a class="button_verde" href="cadastrar_produto">{{ usuario.nome }}</a>
       </nav>
@@ -45,7 +44,8 @@
   <p>Senha: {{ usuario.senha }}</p>
   <p>Telefone: {{usuario.telefone}}</p>
   <a href="/produtos">Produtos</a> |
-  <a href="{{ url_for('logout') }}">Logout</a>
+  <a href="{{ url_for('logout') }}">Logout</a><br><br>
+  <a href="cadastro_produto.html">Cadastrar Produto</a>
 
 
 

@@ -110,12 +110,12 @@ def perfil():
 def pagina_inicial():
     #verifica se ta logado para colocaro nome de user ou registrar
     if current_user.is_authenticated:
-        registrar = f"{current_user.nome}"
+        nome_usuario = f"{current_user.nome}"
     else:
-        registrar = f"Registrar"
+        nome_usuario = ""
 
     produtos = Produto.query.all()
-    return render_template('index.html', mensagem="Bem vindo a pagina inicial!", registrar=registrar, produtos=produtos)
+    return render_template('index.html', mensagem="Bem vindo a pagina inicial!", nome_usuario=nome_usuario, produtos=produtos)
 
 @app.route('/cadastrar_produto', methods=['GET', 'POST'])
 @login_required
@@ -131,16 +131,14 @@ def cadastrar_produto():
         
         caminho_imagem1 = f"static/imagens/{imagem1.filename}"
         imagem1.save(caminho_imagem1)
+
         caminho_imagem2 = f"static/imagens/{imagem2.filename}"
         imagem2.save(caminho_imagem2)
+
         caminho_imagem3 = f"static/imagens/{imagem3.filename}"
         imagem3.save(caminho_imagem3)
        
-        caminho_imagem1 = f"static/imagens/{imagem1.filename}"
-        caminho_imagem2 = f"static/imagens/{imagem2.filename}"
-        caminho_imagem2 = f"static/imagens/{imagem3.filename}"
-
-        
+               
 
         #criando instacia modelo Produtos
         novo_produto = Produto(
@@ -149,7 +147,7 @@ def cadastrar_produto():
             descricao_produto=descricao_produto,
             imagem1=caminho_imagem1,
             imagem2=caminho_imagem2,
-            imagem3=caminho_imagem2,
+            imagem3=caminho_imagem3,
             usuario=current_user #relacionar o produto ao usuario logado
         )
 
@@ -165,8 +163,8 @@ def cadastrar_produto():
 
 @app.route('/produtos')
 def listar_produtos():
-    # produtos = Produto.query.all() busca todos os produtos
-    produtos =Produto.query.filter_by(id_usuario=current_user.id).limit(6).all()
+    produtos = Produto.query.all() #busca todos os produtos
+    # produtos =Produto.query.filter_by(id_usuario=current_user.id).limit(6).all()
     
     return render_template('listar_produtos.html', usuario=current_user, produtos=produtos)
 
