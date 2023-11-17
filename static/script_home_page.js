@@ -4,10 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
     .getAttribute("data-nome-usuario");
 
   if (nome_usuario) {
+    nome_usuario = nome_usuario.split(" ", 1);
     document.getElementById("logado").innerText = nome_usuario;
     document.getElementById("link_menu").innerText = "Menu";
-    varLink = document.getElementById("logado").href = "/perfil";
-    varLink = document.getElementById("link_menu").href = "/perfil";
+    document.getElementById("logado").href = "/perfil";
+    document.getElementById("link_menu").href = "/perfil";
   } else {
     document.getElementById("link_menu").innerText = "Registrar";
   }

@@ -8,8 +8,12 @@ body {
   margin: 0 auto;
 }
 .button_verde {
+  display: inline-block;
   background: #426b1f;
   color: #ffffff;
+  height: 20px;
+  width: 80px;
+  text-align: center;
   border-radius: 8px;
   padding: 8px 15px;
 }

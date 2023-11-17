@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>EcoSwap</title>
+  <title>Perfil {{usuario.nome}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
@@ -24,7 +24,7 @@
         <a href="">Preservação</a>
         <a href="">Sobre</a>
         <a href="{{ url_for('logout') }}">Logout</a>
-        <a class="button_verde" href="cadastrar_produto">{{ usuario.nome }}</a>
+        <a class="button_verde" href="">Menu</a>
       </nav>
     </div>
 
@@ -33,22 +33,51 @@
     </div>
 
     <div class="pesquisa">
-      <a id="pesquisar">Pesquisar</a>
-      <a id="Classificar">Classificar</a>
-      <a id="agrupar">Agrupar</a>
+      <!-- <a id="pesquisar">Pesquisar</a> -->
+      <!-- <a id="Classificar">Classificar</a> -->
     </div>
 
   </header>
-  <h2>Perfil de {{ usuario.nome }}</h2>
+
+  <section class="perfil">
+    <div>
+      <img id="foto_perfil" width="100px" src="" alt="Foto perfil">
+      <h2 id="nome"></h2>
+    </div>
+
+    <div>
+      <strong id="total_publicações">20</strong>
+      <h4 id="publi_total">Publicações</h4>
+
+    </div>
+    <a href="">Editar Perfil</a>
+
+  </section>
+
+  <section class="publicacoes">
+    <div class="imagens">
+    </div>
+    <h5 id="nome-produto"></h5>
+    <strong id="tipo_produto"></strong>
+    <p id="descricao_produto"></p>
+    <a id="ver_mais" href=""></a>
+
+
+  </section>
+
+
+
+  <!-- <h2>Perfil de {{ usuario.nome }}</h2>
   <p>Email: {{ usuario.email }}</p>
   <p>Senha: {{ usuario.senha }}</p>
   <p>Telefone: {{usuario.telefone}}</p>
   <a href="/produtos">Produtos</a> |
-  <a href="{{ url_for('logout') }}">Logout</a><br><br>
-  <a href="cadastro_produto.html">Cadastrar Produto</a>
+  <a href="logout">Logout</a><br><br>
+  <a href="cadastrar_produto">Cadastrar Produto</a>
+  <p id="teste">tes</p> -->
 
-
-
+  <div id="container_dados_user" data-nome="{{usuario.nome}}" data-email="{{usuario.email}}" data-telefone="{{usuario.telefone}}"></div>
+  <script src="{{url_for('static', filename='script_perfil_page.js')}}"></script>
 </body>
 
 </html>

@@ -163,7 +163,8 @@ def cadastrar_produto():
 
 @app.route('/produtos')
 def listar_produtos():
-    produtos = Produto.query.all() #busca todos os produtos
+    # produtos = Produto.query.all() #busca todos os produtos
+    produtos =Produto.query.filter_by(id_usuario=current_user.id).all()
     # produtos =Produto.query.filter_by(id_usuario=current_user.id).limit(6).all()
     
     return render_template('listar_produtos.html', usuario=current_user, produtos=produtos)

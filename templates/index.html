@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='listar_produto.css') }}">
+
 
 </head>
 
@@ -34,36 +36,69 @@
     <div class="pesquisa">
       <a id="pesquisar">Pesquisar</a>
       <a id="Classificar">Classificar</a>
-      <a id="agrupar">Agrupar</a>
     </div>
 
   </header>
 
   <h1 style="text-align: center;">Minha Página Flask</h1>
-  <a href="/perfil">perfil</a><br><br>
-  <p>{{ mensagem }}</p>
-  <h2>Lista de Produtos</h2>
-  {% if produtos %}
-  <ul>
+  <section class="list_produtos">
+    {% if produtos %}
     {% for produto in produtos %}
-    <li>
-      <strong>{{ produto.nome_produto }}</strong><br>
-      Tipo: <strong>{{ produto.tipo_produto }}</strong><br>
-      Descrição: {{ produto.descricao_produto }}<br>
-      Imagem-1: <img width="100px" src="{{ produto.imagem1 }}" alt="Imagem 1"><br>
-      Imagem-2: <img width="100px" src="{{ produto.imagem2 }}" alt="Imagem 2"><br>
-      Imagem-3: <img width="100px" src="{{ produto.imagem3 }}" alt="Imagem 3"><br>
-    </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  <p>Nenhum produto cadastrado.</p>
-  {% endif %}
+    <div class="containner_item">
+      <div class="containner_img">
+        <img class="carrossel  visivel gridmenor" src="{{ produto.imagem1 }}" alt="Imagem 1">
+        <img class="carrossel invisivel gridmenor" src="{{ produto.imagem2 }}" alt="Imagem 2">
+        <img class="carrossel invisivel gridmenor" src="{{ produto.imagem3 }}" alt="Imagem 3">
+      </div>
+      <div class="button_center">
+        <button class="button previous"><img src="/static/imagens/pag/previous_icon.svg" alt="Imagem anterior"></button>
+        <button class="button next"><img src="/static/imagens/pag/next_icon.svg" alt="Imagem anterior"></button>
+      </div>
 
+
+      <div class="inf_produto destaque_produto">
+
+        <strong class="cor_titulo nome_item">{{ produto.nome_produto }}</strong>
+        <strong class="cor_menor_destak tipo_item">{{ produto.tipo_produto }}</strong>
+        <p class="paragrafo_grid_menor descricao_produto">{{ produto.descricao_produto }}</p>
+        <a class="button_templete_cor direita_end" href="">Ver mais</a>
+
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Nenhum produto cadastrado.</p>
+    {% endif %}
+  </section>
+
+  <section class="list_produtos fora_fluxo">
+    <div class="containner_item">
+      <div class="containner_img">
+        <img class="carrossel  visivel gridmenor" src="" alt="Imagem 1">
+        <img class="carrossel invisivel gridmenor" src="" alt="Imagem 2">
+        <img class="carrossel invisivel gridmenor" src="" alt="Imagem 3">
+      </div>
+      <div class="button_center">
+        <button class="button previous"><img src="/static/imagens/pag/previous_icon.svg" alt="Imagem anterior"></button>
+        <button class="button next"><img src="/static/imagens/pag/next_icon.svg" alt="Imagem anterior"></button>
+      </div>
+
+
+      <div class="destaque_produto">
+        <strong class="cor_titulo"></strong>
+        <strong class="cor_menor_destak"></strong>
+
+      </div>
+
+      <p class="paragrafo_grid_menor"></p>
+      <a class="button_templete_cor" href="">Ver mais</a>
+    </div>
+
+  </section>
 
 
   <div id="container_dados_user" data-nome-usuario="{{nome_usuario}}"></div>
-  <script src="{{url_for('static', filename='scrip_home_page.js')}}"></script>
+  <script src="{{url_for('static', filename='script_home_page.js')}}"></script>
 
 </body>
 
