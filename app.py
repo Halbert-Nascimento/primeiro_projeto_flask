@@ -25,7 +25,7 @@ class Usuario(UserMixin, db.Model):
   senha = db.Column(db.String(100), nullable=False)
   telefone = db.Column(db.String(20))
   imagem_perfil = db.Column(db.String(255))
-# Relacionamento um-para-muitos (um usuário pode ter vários produtos)
+# Relacionamento de usuario e produto
   produtos=db.relationship('Produto', back_populates='usuario')
 
 class Produto(db.Model):
@@ -39,8 +39,6 @@ class Produto(db.Model):
 
     id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
     usuario = db.relationship('Usuario', back_populates='produtos')
-
-
 
 
 #callback para carregar o usuario a partir da ID
@@ -84,7 +82,6 @@ def logout():
 
 #cadastrar usuario
 @app.route('/cadastrar_usuario', methods=['GET', 'POST'])
-# @login_required
 def cadastrar_usuario():
     if request.method == 'POST':
         nome = request.form['nome']
@@ -125,14 +122,9 @@ def usuariologado(current_user):
 
 @app.route('/')
 def pagina_inicial():
-    #verifica se ta logado para colocaro nome de user ou registrar
-    # if current_user.is_authenticated:
-    #     nome_usuario = f"{current_user.nome}"
-    # else:
-    #     nome_usuario = ""
-
     produtos = Produto.query.all()
     return render_template('index.html', mensagem="Bem vindo a pagina inicial!", nome_usuario=usuariologado(current_user), produtos=produtos)
+
 
 @app.route('/cadastrar_produto', methods=['GET', 'POST'])
 @login_required

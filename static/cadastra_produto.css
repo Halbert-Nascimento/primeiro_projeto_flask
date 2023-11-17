@@ -3,6 +3,7 @@
   height: 450px;
   width: 400px;
   padding: 10px;
+  border-radius: 5px;
 }
 label{
   display: block;
