@@ -26,6 +26,7 @@ strong {
   background: linear-gradient(to bottom, #ffffff1f, #01ff0923);
   padding: 20px;
   text-align: center;
+  
 }
 
 #foto_perfil {
@@ -39,4 +40,11 @@ strong {
 #total_publicações {
   display: block;
   padding-bottom: 10px;
+  
+}
+
+.publi_total:hover{
+  /* color: #037a07; */
+  text-transform: uppercase;
+ 
 }

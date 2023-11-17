@@ -1,0 +1,24 @@
+.formulario{
+  border: 2px solid #000000;
+  height: 450px;
+  width: 400px;
+  padding: 10px;
+}
+label{
+  display: block;
+  padding: 10px 0 5px 0;
+}
+input{
+  
+}
+.button_form{
+
+  padding: 10px;
+ background: #67C100;
+ border-radius: 10px;
+
+}
+.button_form:hover{
+  font-weight: bold;
+
+}

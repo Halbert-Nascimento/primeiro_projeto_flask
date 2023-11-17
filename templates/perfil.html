@@ -6,8 +6,8 @@
   <meta charset="UTF-8">
   <title>Perfil {{usuario.nome}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='menu_hamburguer.css') }}">
@@ -59,7 +59,7 @@
 
     <div>
       <strong id="total_publicações" class="bloco"></strong>
-      <strong id="publi_total">Publicações</strong>
+      <strong class="publi_total"><a href="/listar_produtos">Publicações</a></strong>
     </div>
 
     <div>
@@ -87,7 +87,7 @@
 
 
 
-  <!-- armazenado as variavesi para pegar com o java script -->
+  <!-- armazenado as variaveis para pegar com o java script -->
   <div id="container_dados_user" data-nome="{{usuario.nome}}" data-email="{{usuario.email}}" data-telefone="{{usuario.telefone}}" data-total_produtos="{{total_produtos}}" data-f_perfil="{{usuario.imagem_perfil}}"></div>
 
 

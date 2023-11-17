@@ -4,27 +4,40 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Cadastrar Produto</title>
+  <title>Perfil {{usuario.nome}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='menu_hamburguer.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='perfil.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='cadastra_produto.css') }}">
+
+
 
 </head>
 
 <body>
   <header>
     <div class="top">
-      <a href="index2.html">
+      <a href="/">
         <h1 id="nome_logo">EcoSwap</h1>
       </a>
       <nav>
         <a href="/">Página Inicial</a>
         <a href="">Preservação</a>
         <a href="">Sobre</a>
-        <a href="{{ url_for('logout') }}">Logout</a>
-        <a class="button_verde" href="">Menu</a>
+        <a id="nome_nav" href="">Login</a>
+        <div class="menu-container">
+          <a class="button_verde" id="link_menu" href="cadastrar_usuario">Menu</a>
+          <div class="submenu">
+            <a href="/perfil">Perfil</a>
+            <a href="/cadastrar_produto">Cadastrar Item</a>
+            <a href="/produtos">Listar Produtos</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+          </div>
+        </div>
       </nav>
     </div>
 
@@ -39,33 +52,45 @@
 
   </header>
 
-  <h2>Adicionar Produto</h2>
-  <form method="POST" action="{{ url_for('cadastrar_produto') }}" enctype="multipart/form-data">
-    <label for="nome_produto">Nome do Produto:</label>
-    <input type="text" name="nome_produto" required><br><br>
+  <h2>Adicionar Produto</h2><br>
+  <div class="formulario">
+    
+    <form method="POST" action="{{ url_for('cadastrar_produto') }}" enctype="multipart/form-data">
+      <label for="nome_produto">Nome do Produto:*</label>
+      <input type="text" name="nome_produto" required><br><br>
+  
+      <label for="tipo_produto">Doação/Troca:*</label>
+      <select name="tipo_produto" id="tipo_produto">
+        <option value="Doação">Doação</option>
+        <option value="Troca">Troca</option>
+      </select>
+  
+      <label for="descricao_produto">Descrição do Produto:*</label>
+      <input type="text" name="descricao_produto" required><br><br>
+  
+      <label for="imagem1">Imagem 1*:</label>
+      <input type="file" name="imagem1" required><br><br>
+  
+      <label for="imagem2">Imagem 2*:</label>
+      <input type="file" name="imagem2" required><br><br>
+  
+      <label for="imagem3">Imagem 3*:</label>
+      <input type="file" name="imagem3" required><br><br>
+  
+      <input class="button_form" type="submit" value="Cadastrar Produto"><br>
+    </form>
 
-    <label for="tipo_produto">Doação/Troca:</label>
-    <input type="text" name="tipo_produto" required><br><br>
+  </div>
+  <div class="regras">
+    <h5></h5>
+    <p></p>
 
-    <label for="descricao_produto">Descrição do Produto:</label>
-    <input type="text" name="descricao_produto" required><br><br>
-
-    <label for="imagem1">Imagem-1:</label>
-    <input type="file" name="imagem1" required><br><br>
-
-    <label for="imagem2">Imagem-2:</label>
-    <input type="file" name="imagem2" required><br><br>
-
-    <label for="imagem3">Imagem-3:</label>
-    <input type="file" name="imagem3" required><br><br>
-
-    <input type="submit" value="Cadastrar Produto"><br>
-  </form>
+  </div>
+  
 
 
-
-  <div id="container_dados_user" data-nome-usuario="{{nome_usuario}}"></div>
-  <script src="{{url_for('static', filename='script_page.js')}}"></script>
+  <div id="container_dados_user" data-nome="{{usuario.nome}}" data-email="{{usuario.email}}" data-telefone="{{usuario.telefone}}" data-total_produtos="{{total_produtos}}" data-f_perfil="{{usuario.imagem_perfil}}"></div>
+  <script src="{{url_for('static', filename='generic.js')}}"></script>
 </body>
 
 </html>

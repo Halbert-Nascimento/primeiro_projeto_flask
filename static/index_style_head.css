@@ -2,6 +2,7 @@ header {
   width: 1000px;
   margin: 0 auto;
 }
+
 #nome_logo {
   font-size: 45px;
   color: #436b1f4d;
@@ -21,6 +22,7 @@ nav a {
 }
 nav a:hover {
   color: #2ad02c;
+  text-decoration: underline;
 }
 nav .button_verde:hover {
   background: #2ad02c;
