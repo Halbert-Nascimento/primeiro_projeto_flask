@@ -24,6 +24,7 @@ class Usuario(UserMixin, db.Model):
   email = db.Column(db.String(100), unique=True, nullable=False)
   senha = db.Column(db.String(100), nullable=False)
   telefone = db.Column(db.String(20))
+  imagem_perfil = db.Column(db.String(255))
 # Relacionamento um-para-muitos (um usuário pode ter vários produtos)
   produtos=db.relationship('Produto', back_populates='usuario')
 
@@ -52,20 +53,25 @@ def load_user(user_id):
 #adicionando rotas para lidar com o login, logout e proteção de rotas autenticadas
 # Rota de login
 @app.route('/login', methods=['GET', 'POST'])
+
 def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        senha = request.form['senha']
-        usuario = Usuario.query.filter_by(email=email).first()
+    if login_required:
+        # se tiver logado redireciona para pagina de perfil
+        return redirect(url_for('perfil'))
+    else:
+        if request.method == 'POST':
+            email = request.form['email']
+            senha = request.form['senha']
+            usuario = Usuario.query.filter_by(email=email).first()
 
-        if usuario and usuario.senha == senha:
-            login_user(usuario)
-            flash('Login bem-sucedido!', 'success')
-            return redirect(url_for('perfil'))
-        else:
-            flash('Credenciais inválidas. Tente novamente.', 'danger')
+            if usuario and usuario.senha == senha:
+                login_user(usuario)
+                flash('Login bem-sucedido!', 'success')
+                return redirect(url_for('perfil'))
+            else:
+                flash('Credenciais inválidas. Tente novamente.', 'danger')
 
-    return render_template('login.html')
+        return render_template('login.html')
 
 # Rota de logout
 @app.route('/logout')
@@ -85,6 +91,7 @@ def cadastrar_usuario():
         email = request.form['email']
         senha = request.form['senha']
         telefone = request.form['telefone']
+        imagem_perfil = request.form['imagem_perfil']
 
         #criando uma instacia do modelo Usuario
         novo_usuario = Usuario(nome=nome, email=email, senha=senha, telefone =telefone )
@@ -101,21 +108,31 @@ def cadastrar_usuario():
 @app.route('/perfil')
 @login_required
 def perfil():
-    return render_template('perfil.html', usuario=current_user, produto=Produto)
+    total_produtos =Produto.query.filter_by(id_usuario=current_user.id).count()
+    return render_template('perfil.html', usuario=current_user, total_produtos=total_produtos)
 
 ####
 #aqui pagina inicial
 ###
-@app.route('/')
-def pagina_inicial():
-    #verifica se ta logado para colocaro nome de user ou registrar
+def usuariologado(current_user):
+    #verifica se ta logado e retonar o nome
     if current_user.is_authenticated:
         nome_usuario = f"{current_user.nome}"
     else:
         nome_usuario = ""
+    return nome_usuario
+
+
+@app.route('/')
+def pagina_inicial():
+    #verifica se ta logado para colocaro nome de user ou registrar
+    # if current_user.is_authenticated:
+    #     nome_usuario = f"{current_user.nome}"
+    # else:
+    #     nome_usuario = ""
 
     produtos = Produto.query.all()
-    return render_template('index.html', mensagem="Bem vindo a pagina inicial!", nome_usuario=nome_usuario, produtos=produtos)
+    return render_template('index.html', mensagem="Bem vindo a pagina inicial!", nome_usuario=usuariologado(current_user), produtos=produtos)
 
 @app.route('/cadastrar_produto', methods=['GET', 'POST'])
 @login_required

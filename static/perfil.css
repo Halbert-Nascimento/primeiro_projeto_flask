@@ -1,0 +1,42 @@
+img,
+h2,
+strong {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+#editar_perfil {
+  display: block;
+  text-align: right;
+  padding: 6px 0 20px 0;
+}
+#button_edita_perfil {
+  border: 1px solid #bebdbd;
+  padding: 5px;
+  border-radius: 5px;
+  background: #00e00723;
+  text-decoration: none;
+  font-size: 15px;
+}
+.perfil {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+  border-radius: 0 15px;
+  background: linear-gradient(to bottom, #ffffff1f, #01ff0923);
+  padding: 20px;
+  text-align: center;
+}
+
+#foto_perfil {
+  background: transparent;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding-bottom: 15px;
+}
+#total_publicações {
+  display: block;
+  padding-bottom: 10px;
+}

@@ -31,7 +31,7 @@
 .carrossel {
   display: none;
 }
-.visivel{
+.visivel {
   display: initial;
 }
 .button_center {
@@ -58,14 +58,14 @@
   gap: 20px;
   grid-template-rows: auto auto;
   padding: 10px;
-    /* Impede que o texto quebre para a próxima linha */
-    white-space: nowrap;
+  /* Impede que o texto quebre para a próxima linha */
+  white-space: nowrap;
 
-    /* Esconde qualquer conteúdo que ultrapasse os limites do elemento */
-    overflow: hidden !important;
-  
-    /* Exibe reticências (...) para indicar que o texto foi cortado */
-    text-overflow: ellipsis;
+  /* Esconde qualquer conteúdo que ultrapasse os limites do elemento */
+  overflow: hidden !important;
+
+  /* Exibe reticências (...) para indicar que o texto foi cortado */
+  text-overflow: ellipsis;
 }
 .nome_item {
   font-size: 20px;
@@ -115,4 +115,34 @@
 
 .fora_fluxo {
   display: none;
+}
+.em_hover {
+  /* display: block; */
+}
+/* #################### para teste com java scrip ##################*/
+
+.teste_container {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background: rgb(28, 185, 7);
+  margin: 20px;
+  text-align: center;
+  align-items: center;
+}
+
+.teste_paragrafo {
+  color: rgb(243, 243, 243);
+}
+
+.teste_paragrafo_transform {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fd0000;
+}
+.teste_container_transform {
+  background: #431af8;
+  border-radius: 15px;
+  width: 120px;
+  height: 120px;
 }

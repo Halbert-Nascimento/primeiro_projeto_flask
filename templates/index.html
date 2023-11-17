@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='listar_produto.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='menu_hamburguer.css') }}">
+
 
 
 </head>
@@ -25,8 +27,18 @@
         <a href="">Preservação</a>
         <a href="">Sobre</a>
         <a id="logado" href="/login">Login</a>
-        <a class="button_verde" id="link_menu" href="cadastrar_usuario">Registrar</a>
+        <div class="menu-container">
+          <a class="button_verde" id="link_menu" href="cadastrar_usuario">Registrar</a>
+          <div class="submenu">
+            <a href="/perfil">Perfil</a>
+            <a href="/cadastrar_produto">Cadastrar Item</a>
+            <a href="/produtos">Listar Produtos</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+          </div>
+        </div>
       </nav>
+
+
     </div>
 
     <div class="banner">
@@ -98,7 +110,7 @@
 
 
   <div id="container_dados_user" data-nome-usuario="{{nome_usuario}}"></div>
-  <script src="{{url_for('static', filename='script_home_page.js')}}"></script>
+  <script src="{{url_for('static', filename='script_page.js')}}"></script>
 
 </body>
 

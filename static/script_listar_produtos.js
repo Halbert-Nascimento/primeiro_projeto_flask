@@ -1,38 +1,32 @@
-// Seleciona todos os containers com a classe 'sua-classe'
-var containers = document.querySelectorAll(".containner_item");
+// const container_item = document.querySelectorAll(".containner_item");
 
-// Adiciona um ouvinte de eventos de clique a cada container
-containers.forEach(function (container, indice) {
-  container.addEventListener("click", function () {
-    // Quando clicado, faça algo com o container específico
-    console.log("Clicou no container " + indice);
+// container_item.forEach(function (container_select, indice) {
+//     container_select.addEventListener("mouseover", function () {
+//         this.classList.add("em_hover");
+//     });
 
-    // Ou, se você quiser se referir ao container específico no evento, use 'this':
-    // console.log("Clicou no container " + containers.indexOf(this));
-    var slide = this.querySelector('[data-js="carrossel"]');
-    const nextButton = document.querySelector('[data-js="button_next"]');
-    const previusButton = document.querySelector('[data-js="button_previus"]');
-    let currentSlideIndex = 0;
+//     container_select.addEventListener("mouseout", function () {
+//         this.classList.remove("em_hover");
+//     });
 
-    nextButton.addEventListener("click", () => {
-      currentSlideIndex++;
-      slides.forEach((slides) => {
-        slides.classList.remove(".visivel");
-      });
-      slides[currentSlideIndex].classList.add(".visivel");
-    });
-  });
-});
+//     container_select.addEventListener("click", function (event) {
+//         if (event.target.classList.contains("click_hover")) {
+//             const container_fora_fluxo = document.querySelector('.fora_fluxo .containner_item_fora_fluxo');
 
-// var slides = this.querySelectorAll(".containner_img");
-// const nextButton = document.querySelector('[data-js="button_next"]');
-// const previusButton = document.querySelector('[data-js="button_previus"]');
-// let currentSlideIndex = 0;
+//             // Recupere as informações dos atributos de dados
+//             const nomeItem = this.dataset.nome;
+//             const tipoItem = this.dataset.tipo;
+//             const descricaoItem = this.dataset.descricao;
 
-// nextButton.addEventListener("click", () => {
-//   currentSlideIndex++;
-//   slides.forEach((slides) => {
-//     slides.classList.remove(".visivel");
-//   });
-//   slides[currentSlideIndex].classList.add(".visivel");
+//             // Atualize os elementos no container fora do fluxo
+//             container_fora_fluxo.querySelector('.cor_titulo').textContent = nomeItem;
+//             container_fora_fluxo.querySelector('.cor_menor_destak').textContent = tipoItem;
+//             container_fora_fluxo.querySelector('.paragrafo_grid_menor').textContent = descricaoItem;
+            
+//             // Adicione a classe para tornar o container fora do fluxo visível
+//             container_fora_fluxo.classList.add("visivel");
+//         }
+//     });
 // });
+//33333333333######################
+

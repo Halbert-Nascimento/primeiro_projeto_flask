@@ -1,0 +1,38 @@
+/* Estilo para o submenu */
+.submenu {
+  /* O submenu começa oculto */
+  display: none;
+
+  /* Define a posição do submenu em relação ao elemento pai */
+  position: absolute;
+
+  /* Indica a direção dos itens do submenu */
+  flex-direction: column;
+
+  /* Cor de fundo do submenu */
+  background-color: #333;
+}
+
+.submenu a {
+  padding: 8px 5px;
+  text-decoration: none;
+  color: white;
+  display: block;
+  transition: background 0.3s;
+}
+.menu-container {
+  display: inline-block;
+}
+
+.submenu a:hover {
+  background-color: #5555559a;
+  border-radius: 10px;
+}
+
+/* Mostrar o submenu quando o mouse passa sobre o botão de Menu */
+.menu-container:hover .submenu {
+  display: flex;
+  background-color: #3333339d;
+  border-radius: 0 0 10px 10px;
+  text-align: right;
+}
