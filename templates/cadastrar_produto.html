@@ -28,13 +28,13 @@
         <a href="/">Página Inicial</a>
         <a href="">Preservação</a>
         <a href="">Sobre</a>
-        <a id="nome_nav" href="">Login</a>
+        <a id="nome_nav" href="/perfil">Nome</a>
         <div class="menu-container">
-          <a class="button_verde" id="link_menu" href="cadastrar_usuario">Menu</a>
+          <a class="button_verde" id="link_menu" href="">Menu</a>
           <div class="submenu">
             <a href="/perfil">Perfil</a>
-            <a href="/cadastrar_produto">Cadastrar Item</a>
-            <a href="/produtos">Listar Produtos</a>
+            <!-- <a href="/cadastrar_produto">Cadastrar Item</a> -->
+            <a href="/listar_produtos">Listar Produtos</a>
             <a href="{{ url_for('logout') }}">Logout</a>
           </div>
         </div>
@@ -48,42 +48,68 @@
 
 
   </header>
+  <main>
+    <div class="formulario">
+      <h2>Adicionar Produto</h2><br>
 
-  <h2>Adicionar Produto</h2><br>
-  <div class="formulario">
+      <form method="POST" action="{{ url_for('cadastrar_produto') }}" enctype="multipart/form-data">
+
+        <label for="nome_produto">Nome do Produto: <em>*</em></label>
+        <input class="text_input" type="text" name="nome_produto" required><br><br>
+
+        <label for="tipo_produto">Doação/Troca: <em>*</em></label>
+        <select class="text_input" name="tipo_produto" id="tipo_produto">
+          <option value="Doação">Doação</option>
+          <option value="Troca">Troca</option>
+        </select>
+
+        <label for="descricao_produto">Descrição do Produto: <em>*</em></label>
+        <textarea class="text_input" type="text" name="descricao_produto" rows="6" cols="70" required></textarea>
+
+        <label class="input_imagem_label" for="imagem1">Imagem 1: <em>*</em></label>
+        <input class="input_imagem" type="file" name="imagem1" required>
+
+        <label class="input_imagem_label" for="imagem2">Imagem 2: <em>*</em></label>
+        <input class="input_imagem" type="file" name="imagem2" required>
+
+        <label class="input_imagem_label" for="imagem3">Imagem 3: <em>*</em></label>
+        <input class="input_imagem" type="file" name="imagem3" required>
+
+        <input class="button_form" type="submit" value="Cadastrar Produto">
+      </form>
+
+    </div>
     
-    <form method="POST" action="{{ url_for('cadastrar_produto') }}" enctype="multipart/form-data">
-      <label for="nome_produto">Nome do Produto:*</label>
-      <input type="text" name="nome_produto" required><br><br>
-  
-      <label for="tipo_produto">Doação/Troca:*</label>
-      <select name="tipo_produto" id="tipo_produto">
-        <option value="Doação">Doação</option>
-        <option value="Troca">Troca</option>
-      </select>
-  
-      <label for="descricao_produto">Descrição do Produto:*</label>
-      <input type="text" name="descricao_produto" required><br><br>
-  
-      <label for="imagem1">Imagem 1*:</label>
-      <input type="file" name="imagem1" required><br><br>
-  
-      <label for="imagem2">Imagem 2*:</label>
-      <input type="file" name="imagem2" required><br><br>
-  
-      <label for="imagem3">Imagem 3*:</label>
-      <input type="file" name="imagem3" required><br><br>
-  
-      <input class="button_form" type="submit" value="Cadastrar Produto"><br>
-    </form>
+    <div class="regras">
+      <ol>
+        <li>
+          <strong>Nome do Produto/Tipo:</strong>
+          É obrigatório fornecer um nome claro e específico para o seu produto. Exemplo: bicicleta, patins, etc.
+        </li>
+        <li>
+          <Strong>Tipo:</Strong>
+          Selecione se o produto é para doação ou troca. Esta informação é fundamental para a comunidade entender suas intenções.
+        </li>
+        <li><strong>Descrição do Produto:</strong>
+          Forneça uma descrição detalhada do seu produto. Você tem até 240 caracteres para explicar as características principais ou condições do item.
+        </li>
+        <li>
+          <strong>Fotos:</strong>
+          Inclua três fotos do seu produto. Certifique-se de que as imagens são claras e mostram diferentes ângulos para que os interessados possam avaliar melhor.
+        </li>
+      </ol>
+      <p>
+        &emsp; Lembre-se: Ao cadastrar um item, você concorda em compartilhar seu número de telefone com pessoas interessadas no seu produto. Esta é uma prática para facilitar a comunicação entre os membros da comunidade EcoSwap.
+      </p>
+      <p>
+        &emsp; O EcoSwap é uma plataforma dedicada à troca e doação de itens, promovendo uma abordagem sustentável e colaborativa. Agradecemos por contribuir para uma comunidade mais consciente! 
+      </p>
+    </div>
 
-  </div>
-  <div class="regras">
-    <h5></h5>
-    <p></p>
+  </main>
 
-  </div>
-  
+
+
 
 
   <div id="container_dados_user" data-nome="{{usuario.nome}}" data-email="{{usuario.email}}" data-telefone="{{usuario.telefone}}" data-total_produtos="{{total_produtos}}" data-f_perfil="{{usuario.imagem_perfil}}"></div>

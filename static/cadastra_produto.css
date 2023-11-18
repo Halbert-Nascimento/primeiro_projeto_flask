@@ -1,25 +1,58 @@
-.formulario{
-  border: 2px solid #000000;
-  height: 450px;
-  width: 400px;
+.formulario,
+.regras {
+  /* border: 1px  solid #d1d0d0; */
+  height: 560px;
+  width: 450px;
   padding: 10px;
   border-radius: 5px;
+  margin: 10px 20px;
+  box-sizing: border-box;
 }
-label{
+.formulario {
+  box-shadow: 10px 15px rgba(180, 180, 180, 0.342);
+  position: relative;
+}
+label {
   display: block;
   padding: 10px 0 5px 0;
-}
-input{
-  
-}
-.button_form{
-
-  padding: 10px;
- background: #67C100;
- border-radius: 10px;
-
-}
-.button_form:hover{
   font-weight: bold;
+}
+.text_input {
+  width: 300px;
+  padding: 8px;
+  border: 1px solid;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+.button_form {
+  padding: 10px;
+  background: #67c100;
+  border-radius: 10px;
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  top: 510px;
+}
+.button_form:hover {
+  background: #7bdf0a;
+}
+main {
+  display: flex;
+  justify-content: space-between;
+}
+.regras {
+  font-size: 15px;
+  text-align: justify;
+}
+.regras ol {
+  padding: 0 5px 5px 15px;
+  margin: 0;
+}
+.regras li {
+  line-height: 1.5;
+  padding-bottom: 15px;
+}
 
+em {
+  color: red;
 }

@@ -32,7 +32,7 @@
           <div class="submenu">
             <a href="/perfil">Perfil</a>
             <a href="/cadastrar_produto">Cadastrar Item</a>
-            <a href="/produtos">Listar Produtos</a>
+            <a href="/listar_produtos">Listar Produtos</a>
             <a href="{{ url_for('logout') }}">Logout</a>
           </div>
         </div>
@@ -46,13 +46,21 @@
     </div>
 
     <div class="pesquisa">
-      <a id="pesquisar">Pesquisar</a>
-      <a id="Classificar">Classificar</a>
+      <form action="" methods="POST">
+        <label for="pesquisar"></label>
+        <input id="pesquisar" type="text" name="pesquisar" placeholder="Pesquisa">
+        <label for="classificar">Classificar: </label>
+        <select name="classificar" id="classificar">
+          <option value="null">Padrão</option>
+          <option value="Doação">Doação</option>
+          <option value="Troca">Troca</option>
+        </select>
+      </form>
     </div>
 
   </header>
 
-  <h1 style="text-align: center;">Minha Página Flask</h1>
+  <h1 style="text-align: center;">Classificados</h1>
   <section class="list_produtos">
     {% if produtos %}
     {% for produto in produtos %}

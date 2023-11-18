@@ -1,32 +1,63 @@
-<!-- login.html -->
-
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
+  <title>Home-EcoSwap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>L_ogin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='listar_produto.css') }}"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+
+
+
 </head>
 
 <body>
+  <header>
+    <div class="top">
+      <a href="/">
+        <h1 id="nome_logo">EcoSwap</h1>
+      </a>
+      <nav>
+        <a href="">Preservação</a>
+        <a href="">Sobre</a>
+        <a id="logado" href="/login">Login</a>
+        <a class="button_verde" id="link_menu" href="cadastrar_usuario">Registrar</a>
+      </nav>
+    </div>
+    <!-- <div class="banner">
+      <img src="/static/imagens/pag/logo banner.png" alt="EcoSwap">
+    </div> -->
+
+
+
+  </header>
   <h2>Login</h2>
-  <!-- {% with messages = get_flashed_messages() %}
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    {{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-  {% endwith %} -->
-  <form method="POST">
-    <label for="email">Email:</label>
-    <input type="email" name="email" required>
-    <label for="senha">Senha:</label>
-    <input type="password" name="senha" required>
-    <input type="submit" value="Login">
-  </form>
+  <section class="login">
+    <div class="centralizar">
+      <img id="tela_login" src="/static/imagens/pag/tela_login.png" alt="">
+    </div>
+
+    <form method="POST">
+      <label for="email"></label>
+      <input type="email" name="email" placeholder="👤 E-mail" required>
+
+      <label for="senha"></label>
+      <input type="password" name="senha" placeholder="🔒 Senha" required>
+      
+      <input id="button_login" type="submit" value="Login">
+      {{mensagem}}
+    </form>
+
+
+
+  </section>
+
 </body>
 
 </html>

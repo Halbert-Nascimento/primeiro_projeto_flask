@@ -4,28 +4,39 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>ADC-USER__EcoSwap</title>
+  <title>Home-EcoSwap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='listar_produto.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='menu_hamburguer.css') }}">
+
+
 
 </head>
 
 <body>
   <header>
     <div class="top">
-      <a href="index2.html">
+      <a href="/">
         <h1 id="nome_logo">EcoSwap</h1>
       </a>
       <nav>
+        <a href="/">Página Inicial</a>
         <a href="">Preservação</a>
-        <a href="">Reciclagem</a>
         <a href="">Sobre</a>
-        <a href="/adicionar_usuario">ADC User</a>
-        <a href="/">Home</a>
-        <a class="button_verde" href="cadastro_produto.html">Registrar</a>
+        <a id="logado" href="/login">Login</a>
+        <div class="menu-container">
+          <a class="button_verde" id="link_menu" href="cadastrar_usuario">Registrar</a>
+          <div class="submenu">
+            <!-- <a href="/perfil">Perfil</a> -->
+            <!-- <a href="/cadastrar_produto">Cadastrar Item</a> -->
+            <!-- <a href="/listar_produtos">Listar Produtos</a> -->
+            <!-- <a href="{{ url_for('logout') }}">Logout</a> -->
+          </div>
+        </div>
       </nav>
     </div>
 
@@ -33,11 +44,7 @@
       <img src="/static/imagens/pag/logo banner.png" alt="EcoSwap">
     </div>
 
-    <div class="pesquisa">
-      <a id="pesquisar">Pesquisar</a>
-      <a id="Classificar">Classificar</a>
-      <a id="agrupar">Agrupar</a>
-    </div>
+ 
 
   </header>
 
@@ -57,6 +64,15 @@
 
     <input type="submit" value="cadastrar usuario"><br>
   </form>
+
+  <div class="explicao">
+    <p>Bem-vindo ao EcoSwap, o seu espaço para troca e doação! Ao cadastrar um item, você está contribuindo para uma comunidade de compartilhamento sustentável.</p>
+
+    <p>Lembre-se de que seu número de telefone e email serão compartilhados apenas com pessoas interessadas no seu item. Este é um serviço exclusivo de troca e doação, e todas as conversas são direcionadas para plataformas externas de mensagens.</p>
+
+    <p>Sua privacidade é importante para nós. Se tiver alguma dúvida sobre como suas informações são tratadas, consulte nossa política de privacidade.</p>
+
+  </div>
 
 
 

@@ -4,3 +4,8 @@ a {
 .list_produtos a:hover {
   text-decoration: underline;
 }
+body {
+  background: linear-gradient(to bottom left, #ffffffc7, #01ff092a);
+  /*Gradiente leve*/
+  height: 100vh; /* Define a altura para ocupar toda a altura da tela */
+}

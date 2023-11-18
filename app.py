@@ -51,9 +51,9 @@ def load_user(user_id):
 #adicionando rotas para lidar com o login, logout e proteção de rotas autenticadas
 # Rota de login
 @app.route('/login', methods=['GET', 'POST'])
-
 def login():
-    if login_required:
+    mensagem=""
+    if current_user.is_authenticated:
         # se tiver logado redireciona para pagina de perfil
         return redirect(url_for('perfil'))
     else:
@@ -64,12 +64,12 @@ def login():
 
             if usuario and usuario.senha == senha:
                 login_user(usuario)
-                flash('Login bem-sucedido!', 'success')
+                
                 return redirect(url_for('perfil'))
             else:
-                flash('Credenciais inválidas. Tente novamente.', 'danger')
+                mensagem = "Credenciais invalidas!"
 
-        return render_template('login.html')
+        return render_template('login.html', mensagem=mensagem)
 
 # Rota de logout
 @app.route('/logout')
@@ -88,7 +88,7 @@ def cadastrar_usuario():
         email = request.form['email']
         senha = request.form['senha']
         telefone = request.form['telefone']
-        imagem_perfil = request.form['imagem_perfil']
+        # imagem_perfil = request.form['imagem_perfil']
 
         #criando uma instacia do modelo Usuario
         novo_usuario = Usuario(nome=nome, email=email, senha=senha, telefone =telefone )

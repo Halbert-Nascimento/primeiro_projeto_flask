@@ -40,7 +40,7 @@ nav .button_verde:hover {
 .pesquisa {
   display: flex;
   height: 80px;
-  background: #fafaf5;
+  /* background: #fafaf5; */
   justify-content: center;
   align-items: center;
   justify-content: end;
