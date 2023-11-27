@@ -6,14 +6,11 @@
   <meta charset="UTF-8">
   <title>Home-EcoSwap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='listar_produto.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='menu_hamburguer.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='perfil.css') }}">
-
+  <!--Configuração navegador de links estilização externa-->
 
 </head>
 
@@ -23,7 +20,7 @@
       <a href="/">
         <h1 id="nome_logo">EcoSwap</h1>
       </a>
-      <nav>
+      <nav> <!--Menu de navegação com estilo hamburguer-->
         <a href="/">Página Inicial</a>
         <a href="">Preservação</a>
         <a href="">Sobre</a>
@@ -40,54 +37,61 @@
       </nav>
     </div>
 
-    <div class="banner">
-      <img src="/static/imagens/pag/logo banner.png" alt="EcoSwap">
-    </div>
 
-    <div class="pesquisa">
-      <a id="pesquisar">Pesquisar</a>
-      <a id="Classificar">Classificar</a>
-    </div>
 
   </header>
 
 
 
-  <h1 style="text-align: center;">Itens Online</h1>
-  <section class="list_produtos">
+  <h1 style="text-align: center;">Meus itens Online</h1>
+
+  <section class="list_produtos"> <!-- Inicio da seção lista de produtos-->
     {% if produtos %}
     {% for produto in produtos %}
-    <div class="containner_item" data-index="{{ loop.index }}" data-nome="{{ produto.nome_produto }}" data-tipo="{{ produto.tipo_produto }}" data-descricao="{{ produto.descricao_produto }}">
+    <!-- loop percorrer produtos cadastrados no banco de dados -->
+    <div class="containner_item">
 
-      <div class="containner_img">
+      <div class="containner_img"> <!-- area para segurar as imagens,  -->
+        <!-- class carrocel, visivel invisivel sera usadas para transição de imagens pelo javaScrip -->
+        <!-- class gridmenor usada para setar configuração das imagem que ficam no container item, configura tamanhos 
+  para não estoura-->
         <img data-js="carrossel" class="carrossel  visivel gridmenor" src="{{ produto.imagem1 }}" alt="Imagem 1">
         <img data-js="carrossel" class="carrossel invisivel gridmenor" src="{{ produto.imagem2 }}" alt="Imagem 2">
         <img data-js="carrossel" class="carrossel invisivel gridmenor" src="{{ produto.imagem3 }}" alt="Imagem 3">
+
+
+        <div class="button_center"> <!-- area dos botoes volta e avançar  usado para troca as imagens na tela-->
+          <button data-js="button_previus" class="button previous"><img src="/static/imagens/pag/previous_icon.svg" alt="Imagem anterior"></button>
+
+          <button data-js="button_next" class="button next"><img src="/static/imagens/pag/next_icon.svg" alt="Imagem anterior"></button>
+        </div>
+
       </div>
-      <div class="button_center">
-        <button data-js="button_previus" class="button previous"><img src="/static/imagens/pag/previous_icon.svg" alt="Imagem anterior"></button>
-        <button data-js="button_next" class="button next"><img src="/static/imagens/pag/next_icon.svg" alt="Imagem anterior"></button>
-      </div>
 
 
-      <div class="inf_produto destaque_produto">
-
+      <div class="inf_produto destaque_produto"> <!-- Informações do produto em destaque -->
         <strong class="cor_titulo nome_item">{{ produto.nome_produto }}</strong>
-        <strong class="cor_menor_destak tipo_item">{{ produto.tipo_produto }}</strong>
-        <p class="paragrafo_grid_menor descricao_produto">{{ produto.descricao_produto }}</p>
-        <a class="button_templete_cor direita_end click_hover">Ver mais</a>
-
+        <strong class="cor_destak tipo_item">{{ produto.tipo_produto }}</strong>
       </div>
+
+
+      <p class="paragrafo_grid_menor descricao_produto">{{ produto.descricao_produto }}</p>
+      <!-- criar botao para remover item  -->
+      <a class="button_templete_cor  click_hover" target="_blank">Remover</a>
+
     </div>
-    {% endfor %}
+
+    {% endfor %} <!--Fim do loop que exibe produtos-->
     {% else %}
+    <!-- Mensagem exibida quando não há produtos cadastrados -->
     <p>Nenhum produto cadastrado.</p>
     {% endif %}
-  </section>
+  </section><!-- fim da seção lista de produtos-->
 
 
 
   <div id="container_dados_user" data-nome="{{usuario.nome}}" data-email="{{usuario.email}}" data-telefone="{{usuario.telefone}}" data-total_produtos="{{total_produtos}}" data-f_perfil="{{usuario.imagem_perfil}}"></div>
+  <!--Data atributos com informações dinamicas do usuario par ser usado pelo javaScrip-->
 
 
   <script src="{{url_for('static', filename='generic.js')}}"></script>

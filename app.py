@@ -17,33 +17,37 @@ migrate = Migrate(app, db)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
+# Definição da classe 'Usuario' para representar usuários no banco de dados.
 class Usuario(UserMixin, db.Model):
-  __tablename__ = 'usuarios'
-  id = db.Column(db.Integer, primary_key=True)
-  nome = db.Column(db.String(100), nullable=False)
-  email = db.Column(db.String(100), unique=True, nullable=False)
-  senha = db.Column(db.String(100), nullable=False)
-  telefone = db.Column(db.String(20))
-  imagem_perfil = db.Column(db.String(255))
+  __tablename__ = 'usuarios' # especifica o nome correto da tabela queesta no DB
+  id = db.Column(db.Integer, primary_key=True) # Campo de chave primária
+  nome = db.Column(db.String(100), nullable=False) # Nome do usuário (obrigatório)
+  email = db.Column(db.String(100), unique=True, nullable=False)  # Email do usuário (único e obrigatório)
+  senha = db.Column(db.String(100), nullable=False) # Senha do usuário (obrigatória)
+  telefone = db.Column(db.String(20)) # Número de telefone do usuário
+  imagem_perfil = db.Column(db.String(255))  # Caminho da imagem de perfil
 # Relacionamento de usuario e produto
   produtos=db.relationship('Produto', back_populates='usuario')
 
+# Definição da classe 'Produto' para representar produtos no banco de dados.
 class Produto(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nome_produto = db.Column(db.String(255), nullable=False)
-    tipo_produto = db.Column(db.String(255))
-    descricao_produto = db.Column(db.Text)
-    imagem1=db.Column(db.String(255))
+    id = db.Column(db.Integer, primary_key=True) # Campo de chave primária
+    nome_produto = db.Column(db.String(255), nullable=False) # Nome do produto (obrigatório)
+    tipo_produto = db.Column(db.String(255)) # Tipo do produto
+    descricao_produto = db.Column(db.Text) # Descrição do produto
+    imagem1=db.Column(db.String(255))  # Caminho das imagens 1 a 3
     imagem2=db.Column(db.String(255))
     imagem3=db.Column(db.String(255))
 
-    id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
-    usuario = db.relationship('Usuario', back_populates='produtos')
+    id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False) # Chave estrangeira para relacionar o produto ao usuário
+    usuario = db.relationship('Usuario', back_populates='produtos') # Relacionamento com a classe 'Usuario' indicando o proprietário do produto
 
 
 #callback para carregar o usuario a partir da ID
+# Esta função load_user é usada pelo Flask-Login para carregar um objeto de usuário a partir do ID fornecido durante a sessão do usuário
 @login_manager.user_loader
 def load_user(user_id):
+  # consulta o banco de dados para obter o objeto de usuário correspondente ao ID fornecido.
   return Usuario.query.get(int(user_id))
   
 
@@ -56,34 +60,33 @@ def login():
     if current_user.is_authenticated:
         # se tiver logado redireciona para pagina de perfil
         return redirect(url_for('perfil'))
-    else:
+    else: # se não tiver logado receb os dados do formulario de login
         if request.method == 'POST':
             email = request.form['email']
             senha = request.form['senha']
-            usuario = Usuario.query.filter_by(email=email).first()
+            usuario = Usuario.query.filter_by(email=email).first() #fax pesquisa no DB pelo email para saber se esta cadastrado 
 
-            if usuario and usuario.senha == senha:
+            if usuario and usuario.senha == senha: #confirma se a senha esta correta
                 login_user(usuario)
                 
                 return redirect(url_for('perfil'))
-            else:
+            else: # se a senha tiver errada ou usuario não cadastrado informa mensagem de erro
                 mensagem = "Credenciais invalidas!"
 
         return render_template('login.html', mensagem=mensagem)
 
 # Rota de logout
 @app.route('/logout')
-@login_required
+@login_required # necessrio estar logado para executar essa função
 def logout():
     logout_user()
-    flash('Logout bem-sucedido!', 'success')
-    print("deslogado")
-    return redirect(url_for('pagina_inicial'))
+    print("deslogado") # printa mensagem deslogado para debug
+    return redirect(url_for('pagina_inicial')) # redireciona para pagina inicial apos logout
 
-#cadastrar usuario
+# Rota cadastrar usuario, aceita solicitações get e post
 @app.route('/cadastrar_usuario', methods=['GET', 'POST'])
 def cadastrar_usuario():
-    if request.method == 'POST':
+    if request.method == 'POST': # se solicitação for tipo post pega requerimento de formulario
         nome = request.form['nome']
         email = request.form['email']
         senha = request.form['senha']
@@ -93,24 +96,22 @@ def cadastrar_usuario():
         #criando uma instacia do modelo Usuario
         novo_usuario = Usuario(nome=nome, email=email, senha=senha, telefone =telefone )
 
-        #adicionando novo usuario ao DB
-        db.session.add(novo_usuario)
-        db.session.commit()
+        
+        db.session.add(novo_usuario) # adicionando novo usuario ao DB
+        db.session.commit() # salva as informações no Db
 
-        print("Usuario cadastrado com sucesso")
-        return redirect(url_for('login'))
-    return render_template('cadastrar_usuario.html')
+        print("Usuario cadastrado com sucesso") #mensagem pra debug
+        return redirect(url_for('login')) # redireciona para pagina de login apos cadastro
+    return render_template('cadastrar_usuario.html') # renderiza a pagina cadastro usuario se a solicitação for get
 
-# Rota protegida que requer autenticação
+# Rota de perfil 
 @app.route('/perfil')
-@login_required
+@login_required # para acessar rota de perfil e necessario estar logdo
 def perfil():
-    total_produtos =Produto.query.filter_by(id_usuario=current_user.id).count()
-    return render_template('perfil.html', usuario=current_user, total_produtos=total_produtos)
+    total_produtos =Produto.query.filter_by(id_usuario=current_user.id).count() # query de quantos itens esse usuario tem cadastrado
+    return render_template('perfil.html', usuario=current_user, total_produtos=total_produtos) # renderiza a pagina com as informações de usuario e td de itens passadas,
 
-####
-#aqui pagina inicial
-###
+# função para verificar se esta logado
 def usuariologado(current_user):
     #verifica se ta logado e retonar o nome
     if current_user.is_authenticated:
@@ -119,17 +120,22 @@ def usuariologado(current_user):
         nome_usuario = ""
     return nome_usuario
 
+####
+#aqui pagina inicial
+###
 
+# rota d pagina inicial index.html
 @app.route('/')
 def pagina_inicial():
-    produtos = Produto.query.all()
+    produtos = Produto.query.join(Produto.usuario).all() # query d todos os produtos no DB
     return render_template('index.html', mensagem="Bem vindo a pagina inicial!", nome_usuario=usuariologado(current_user), produtos=produtos)
+    # renderiza a pagina com as informações de usuario e mensagem passadas,
 
-
+# Rota de cadastro produtos, aceita solicitações get e post
 @app.route('/cadastrar_produto', methods=['GET', 'POST'])
 @login_required
 def cadastrar_produto():
-    if request.method== 'POST':
+    if request.method== 'POST': # se solicitação for tipo post pega requerimento de formulario
         nome_produto = request.form['nome_produto']
         tipo_produto = request.form['tipo_produto']
         descricao_produto = request.form['descricao_produto']
@@ -162,22 +168,23 @@ def cadastrar_produto():
 
         #adc o novo produto ao Db
         db.session.add(novo_produto)
-        db.session.commit()
+        db.session.commit() # salva as alerações
 
-        flash('Produttos cadasrado com sucesso!', 'succes')
-        return redirect(url_for('perfil'))
+        flash('Produttos cadasrado com sucesso!', 'succes') #passa mensagem direto para o html 
+        return redirect(url_for('perfil')) # apos cadastrar item edireciona para pag perfil
     usuario=current_user    
     return render_template('cadastrar_produto.html', usuario=usuario)
 
-
+#Rota para listar produtos do usuario logado
 @app.route('/listar_produtos')
+@login_required # necessrio estar logado
 def listar_produtos():
-    # produtos = Produto.query.all() #busca todos os produtos
+    # busca produtos do usuario logado no momento
     produtos =Produto.query.filter_by(id_usuario=current_user.id).all()
     # produtos =Produto.query.filter_by(id_usuario=current_user.id).limit(6).all()
     
     return render_template('listar_produtos.html', usuario=current_user, produtos=produtos)
 
-
+# Executa o aplicativo Flask apenas se este script estiver sendo executado diretamente.
 if __name__ == '__main__':
     app.run(debug=True)

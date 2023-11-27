@@ -6,14 +6,11 @@
   <meta charset="UTF-8">
   <title>Home-EcoSwap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='listar_produto.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='menu_hamburguer.css') }}">
-
-
+  <!--Configuração navegador de links estilização externa-->
 
 </head>
 
@@ -23,11 +20,12 @@
       <a href="/">
         <h1 id="nome_logo">EcoSwap</h1>
       </a>
-      <nav>
-        <a href="">Preservação</a>
+      <nav> <!--Menu de navegação com estilo hamburguer-->
+        <a href="#classificados">Classificados</a>
+        <!-- <a href="">Preservação</a> -->
         <a href="">Sobre</a>
         <a id="logado" href="/login">Login</a>
-        <div class="menu-container">
+        <div class="menu-container" id="container-logoutID">
           <a class="button_verde" id="link_menu" href="cadastrar_usuario">Registrar</a>
           <div class="submenu">
             <a href="/perfil">Perfil</a>
@@ -40,83 +38,85 @@
 
 
     </div>
-
-    <div class="banner">
-      <img src="/static/imagens/pag/logo banner.png" alt="EcoSwap">
-    </div>
-
-    <div class="pesquisa">
-      <form action="" methods="POST">
-        <label for="pesquisar"></label>
-        <input id="pesquisar" type="text" name="pesquisar" placeholder="Pesquisa">
-        <label for="classificar">Classificar: </label>
-        <select name="classificar" id="classificar">
-          <option value="null">Padrão</option>
-          <option value="Doação">Doação</option>
-          <option value="Troca">Troca</option>
-        </select>
-      </form>
-    </div>
-
   </header>
 
-  <h1 style="text-align: center;">Classificados</h1>
-  <section class="list_produtos">
+  <section class="visao"><!--seção de apresentação do site-->
+    <!--Seção configurada para ficar estática -->
+    <div class="imagem_fundo_left">
+      <img src="/static/imagens/pag/doaçao2.png" alt="Pessoas doando itens">
+    </div>
+    <div class="texto_banner">
+      <h1>Construindo Pontes para um Futuro Sustentável: <br><em>Troque e Doe</em></h1>
+      <p>Nossa missão é criar uma comunidade onde a troca e doação sejam os pilares de uma vida sustentável. Ao passo que trocamos bens e doamos o que não necessitamos mais, estamos construindo pontes para um futuro mais consciente. Faça parte dessa jornada e ajude-nos a construir um mundo onde a generosidade e a sustentabilidade andam de mãos dadas.</p>
+
+    </div>
+
+  </section><!-- Fim seção de apresentação do site-->
+
+
+
+
+  <div class="pesquisa" id="classificados"> <!--Implementar funcionalidade de pesquisar por nome-->
+    <h1 style="text-align: center; padding: 15px ;">Classificados</h1><!--Estilo aplicado na tag para centralizar e espaço interno do titulo titulo-->
+
+    <!-- <form action="" methods="POST">
+      <label for="pesquisar"></label>
+      <input id="pesquisar" type="text" name="pesquisar" placeholder="Pesquisa">
+      </select>
+    </form> -->
+    <!-- parte de busca retirada , ainda em desenvolvimento -->
+  </div>
+
+
+
+
+
+  <section class="list_produtos"> <!-- Inicio da seção lista de produtos-->
     {% if produtos %}
     {% for produto in produtos %}
+    <!-- loop percorrer produtos cadastrados no bancod dados -->
     <div class="containner_item">
-      <div class="containner_img">
-        <img class="carrossel  visivel gridmenor" src="{{ produto.imagem1 }}" alt="Imagem 1">
-        <img class="carrossel invisivel gridmenor" src="{{ produto.imagem2 }}" alt="Imagem 2">
-        <img class="carrossel invisivel gridmenor" src="{{ produto.imagem3 }}" alt="Imagem 3">
-      </div>
-      <div class="button_center">
-        <button class="button previous"><img src="/static/imagens/pag/previous_icon.svg" alt="Imagem anterior"></button>
-        <button class="button next"><img src="/static/imagens/pag/next_icon.svg" alt="Imagem anterior"></button>
-      </div>
+
+      <div class="containner_img"> <!-- area para segurar as imagens,  -->
+        <!-- class carrocel, visivel invisivel sera usadas para transição de imagens pelo javaScrip -->
+        <!-- class gridmenor usada para setar configuração das imagem que ficam no container item, configura tamanhos 
+  para não estoura-->
+        <img data-js="carrossel" class="carrossel  visivel gridmenor" src="{{ produto.imagem1 }}" alt="Imagem 1">
+        <img data-js="carrossel" class="carrossel invisivel gridmenor" src="{{ produto.imagem2 }}" alt="Imagem 2">
+        <img data-js="carrossel" class="carrossel invisivel gridmenor" src="{{ produto.imagem3 }}" alt="Imagem 3">
 
 
-      <div class="inf_produto destaque_produto">
+        <div class="button_center"> <!-- area dos botoes volta e avançar  usado para troca as imagens na tela-->
+          <button data-js="button_previus" class="button previous"><img src="/static/imagens/pag/previous_icon.svg" alt="Imagem anterior"></button>
 
+          <button data-js="button_next" class="button next"><img src="/static/imagens/pag/next_icon.svg" alt="Imagem anterior"></button> <!-- FIM area dos botoes -->
+        </div>
+
+      </div> <!-- FIM area para segurar as imagens,  -->
+
+
+      <div class="inf_produto destaque_produto"> <!-- Informações do produto em destaque -->
         <strong class="cor_titulo nome_item">{{ produto.nome_produto }}</strong>
-        <strong class="cor_menor_destak tipo_item">{{ produto.tipo_produto }}</strong>
-        <p class="paragrafo_grid_menor descricao_produto">{{ produto.descricao_produto }}</p>
-        <a class="button_templete_cor direita_end" href="">Ver mais</a>
-
+        <strong class="cor_destak tipo_item">{{ produto.tipo_produto }}</strong>
       </div>
+
+
+      <p class="paragrafo_grid_menor descricao_produto">{{ produto.descricao_produto }}</p>
+      <!-- Botão de contato, link dinâmico para o WhatsApp com numeo de quem fez o cadastro-->
+      <a class="button_templete_cor  click_hover" href=" https://wa.me/{{produto.usuario.telefone}}" target="_blank">Contato</a>
+
     </div>
+
     {% endfor %}
     {% else %}
+    <!-- Mensagem exibida quando não há produtos cadastrados -->
     <p>Nenhum produto cadastrado.</p>
     {% endif %}
-  </section>
-
-  <section class="list_produtos fora_fluxo">
-    <div class="containner_item">
-      <div class="containner_img">
-        <img class="carrossel  visivel gridmenor" src="" alt="Imagem 1">
-        <img class="carrossel invisivel gridmenor" src="" alt="Imagem 2">
-        <img class="carrossel invisivel gridmenor" src="" alt="Imagem 3">
-      </div>
-      <div class="button_center">
-        <button class="button previous"><img src="/static/imagens/pag/previous_icon.svg" alt="Imagem anterior"></button>
-        <button class="button next"><img src="/static/imagens/pag/next_icon.svg" alt="Imagem anterior"></button>
-      </div>
+  </section><!-- fim da seção lista de produtos-->
 
 
-      <div class="destaque_produto">
-        <strong class="cor_titulo"></strong>
-        <strong class="cor_menor_destak"></strong>
 
-      </div>
-
-      <p class="paragrafo_grid_menor"></p>
-      <a class="button_templete_cor" href="">Ver mais</a>
-    </div>
-
-  </section>
-
-
+  <!--variaves para serem usadas pelo javaScript-->
   <div id="container_dados_user" data-nome-usuario="{{nome_usuario}}"></div>
   <script src="{{url_for('static', filename='script_page.js')}}"></script>
 

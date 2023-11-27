@@ -1,3 +1,5 @@
+// script para pagina de PERFIL
+
 document.addEventListener("DOMContentLoaded", function () {
   // var nome = document.getElementById("container_dados_user").getAttribute("data-nome");
   var nome = document.getElementById("container_dados_user").dataset.nome;

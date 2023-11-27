@@ -1,24 +1,31 @@
+html {
+  scroll-behavior: smooth;
+  /*para quando clicar link ancora dentro da propria pag fazer uma rolagem suave*/
+}
 header {
   width: 1000px;
   margin: 0 auto;
+  /*Limites de loyout e margin para alinhamento ao centro*/
 }
 
 #nome_logo {
   font-size: 45px;
-  color: #436b1f4d;
+  color: #436b1f85;
   font-family: Newsreader, "Times New Roman", Georgia, Palatino;
+  /*Configurações do nome da logo no menu de navegação*/
 }
 
 .top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /*Div para menu, felexivel alinhando ao centro e espaçamento*/
 }
 nav a {
   margin: 0 20px;
-  /* padding: 0 20px; */
   font-size: 18px;
   color: #000000;
+  /*Configuração de links do menu*/
 }
 nav a:hover {
   color: #2ad02c;
@@ -28,36 +35,67 @@ nav .button_verde:hover {
   background: #2ad02c;
   color: #ffffff;
 }
+/*Configuração de links do menu apos passar o mouse*/
 
-.banner {
-  width: 1000px;
-  height: 160px;
-  background: #2ad02c;
-  text-align: center;
-  border-radius: 24px;
-  margin: 20px 0;
-}
 .pesquisa {
-  display: flex;
-  height: 80px;
-  /* background: #fafaf5; */
-  justify-content: center;
-  align-items: center;
-  justify-content: end;
-  gap: 30px;
+  margin-top: 550px;
+  text-align: end;
+  margin-right: 10px;
+  /*Alinha container de pesquisa a direita e define tamanho*/
 }
-.pesquisa a {
-  padding: 20px;
-  font-size: 12px;
+.pesquisa h1 {
+  text-align: center;
+  margin: 0;
+  /*Alinha container de pesquisa a direita e define tamanho*/
 }
+
 #pesquisar {
-  background: #b2b2b2;
-  padding: 5px 100px;
+  background: #dbdada;
+  padding: 5px 40px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 15px;
+  margin-top: 0;
+  /* Alinha label de pesquisa, cor, padding e alinhamento*/
+}
+
+/* ######### CONFIGURAÇÕES DO MENU HAMBUGUER ################# */
+
+/* Estilo para o submenu */
+.submenu {
+  /* O submenu começa oculto */
+  display: none;
+  /* Define a posição do submenu em relação ao elemento pai */
+  position: absolute;
+  /* Indica a direção dos itens do submenu */
+  flex-direction: column;
+}
+
+.submenu a {
+  padding: 8px 5px;
+  text-decoration: none;
+  color: white;
+  display: block;
+  transition: background 0.3s;
+  /*Definição para docomportamento para tag a dentro do sbmenu*/
+}
+.menu-container {
+  display: inline-block;
+}
+.container-logout {
+  display: inline-block;
+}
+
+.submenu a:hover {
+  background-color: #5555559a;
   border-radius: 10px;
 }
 
-footer {
-  margin-top: 20px;
-  height: 200px;
-  background: #d8d8d2;
+.menu-container:hover .submenu {
+  /* Mostrar o submenu quando o mouse passa sobre o botão de Menu */
+  display: flex;
+  /* Cor de fundo do submenu */
+  background-color: #3333339d;
+  border-radius: 5px 5px 10px 10px;
+  text-align: right;
 }

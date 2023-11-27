@@ -9,12 +9,9 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='menu_hamburguer.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='perfil.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='cadastra_produto.css') }}">
-
-
+  <!--Configuração navegador de links estilização externa-->
 
 </head>
 
@@ -24,7 +21,7 @@
       <a href="/">
         <h1 id="nome_logo">EcoSwap</h1>
       </a>
-      <nav>
+      <nav> <!--Menu de navegação com estilo hamburguer-->
         <a href="/">Página Inicial</a>
         <a href="">Preservação</a>
         <a href="">Sobre</a>
@@ -41,18 +38,18 @@
       </nav>
     </div>
 
-    <div class="banner">
-      <img src="/static/imagens/pag/logo banner.png" alt="EcoSwap">
-    </div>
+
 
 
 
   </header>
   <main>
     <div class="formulario">
+      <!--Seção do formulario par areceber os dados do item a ser cadastrado, Nome, tipo, descrição e imagens, required: todos obrigatorios-->
       <h2>Adicionar Produto</h2><br>
 
       <form method="POST" action="{{ url_for('cadastrar_produto') }}" enctype="multipart/form-data">
+        <!--Configuração do método POST para envio de dados, direcionando para a rota 'cadastrar_produto' no backend e permitindo o envio de arquivos-->
 
         <label for="nome_produto">Nome do Produto: <em>*</em></label>
         <input class="text_input" type="text" name="nome_produto" required><br><br>
@@ -79,8 +76,8 @@
       </form>
 
     </div>
-    
-    <div class="regras">
+
+    <div class="regras"> <!--Seção informativa de como deve cadastrar o classificado-->
       <ol>
         <li>
           <strong>Nome do Produto/Tipo:</strong>
@@ -102,7 +99,7 @@
         &emsp; Lembre-se: Ao cadastrar um item, você concorda em compartilhar seu número de telefone com pessoas interessadas no seu produto. Esta é uma prática para facilitar a comunicação entre os membros da comunidade EcoSwap.
       </p>
       <p>
-        &emsp; O EcoSwap é uma plataforma dedicada à troca e doação de itens, promovendo uma abordagem sustentável e colaborativa. Agradecemos por contribuir para uma comunidade mais consciente! 
+        &emsp; O EcoSwap é uma plataforma dedicada à troca e doação de itens, promovendo uma abordagem sustentável e colaborativa. Agradecemos por contribuir para uma comunidade mais consciente!
       </p>
     </div>
 
@@ -111,7 +108,7 @@
 
 
 
-
+  <!-- armazenado as variaveis para pegar com o java script -->
   <div id="container_dados_user" data-nome="{{usuario.nome}}" data-email="{{usuario.email}}" data-telefone="{{usuario.telefone}}" data-total_produtos="{{total_produtos}}" data-f_perfil="{{usuario.imagem_perfil}}"></div>
   <script src="{{url_for('static', filename='generic.js')}}"></script>
 </body>

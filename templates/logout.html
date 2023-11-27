@@ -6,27 +6,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Logout</title>
 </head>
 
 <body>
-  <h2>Login</h2>
-  {% with messages = get_flashed_messages() %}
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    {{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-  {% endwith %}
-  <form method="POST">
-    <label for="email">Email:</label>
-    <input type="email" name="email" required>
-    <label for="senha">Senha:</label>
-    <input type="password" name="senha" required>
-    <input type="submit" value="Login">
-  </form>
+  <h2>logout</h2>
+  <h3>Pagina redirecionada....</h3>
+  <!--Pagina sem finalidade -->
 </body>
 
 </html>

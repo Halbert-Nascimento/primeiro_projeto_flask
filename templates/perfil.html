@@ -4,14 +4,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Perfil {{usuario.nome}}</title>
+  <title>Perfil {{usuario.nome}}</title><!--Exibe no titulo o nome do usuario logado-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='menu_hamburguer.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='perfil.css') }}">
+   <!--Configuração navegador de links estilização externa-->
 
 
 </head>
@@ -19,10 +18,10 @@
 <body>
   <header>
     <div class="top">
-      <a href="/">
+      <a href="/"><!--Redireciona pag principal-->
         <h1 id="nome_logo">EcoSwap</h1>
       </a>
-      <nav>
+      <nav> <!--Menu de navegação com estilo hamburguer-->
         <a href="/">Página Inicial</a>
         <a href="">Preservação</a>
         <a href="">Sobre</a>
@@ -39,13 +38,11 @@
       </nav>
     </div>
 
-    <div class="banner">
-      <img src="/static/imagens/pag/logo banner.png" alt="EcoSwap">
-    </div>
 
-    <div id="editar_perfil">
+
+    <!-- <div id="editar_perfil">
       <a id="button_edita_perfil" href="">Editar Perfil</a>
-    </div>
+    </div> -->
 
   </header>
 
