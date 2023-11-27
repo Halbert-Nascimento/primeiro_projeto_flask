@@ -2,8 +2,6 @@
 
 # comando git
 
-Certamente, aqui estão alguns comandos Git úteis para consulta futura, cada um com uma breve explicação de uma linha:
-
 git init: Inicia um novo repositório Git no diretório atual.
 
 git clone [URL]: Clona um repositório remoto para o seu ambiente local.
