@@ -4,7 +4,7 @@
 
 /*
   FUNÇÃO FORMATAR NOME,  
-  REMOVER OME COMPOSTOR E SOBRE NOME e
+  REMOVER NOME COMPOSTO, SOBRE NOME e
   MOSTRAR SÓ PRIMEIRO NOME
 */
 document.addEventListener("DOMContentLoaded", function () {
@@ -14,4 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var primeiro_nome = nome.split(" ", 1);
 
   document.getElementById("nome_nav").innerHTML = primeiro_nome;
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  // essa função espera a pagina html ser carregada primeiro
 });
