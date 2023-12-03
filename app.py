@@ -185,6 +185,7 @@ def listar_produtos():
     
     return render_template('listar_produtos.html', usuario=current_user, produtos=produtos)
 
+
 #rota para exlusão de produtos cadastrados
 @app.route('/excluir_item/<int:id>', methods=['GET', 'POST'])
 @login_required

@@ -23,7 +23,7 @@
       <nav> <!--Menu de navegação com estilo hamburguer-->
         <a href="#classificados">Classificados</a>
         <!-- <a href="">Preservação</a> -->
-        <a href="">Sobre</a>
+        <a href="/sobre">Sobre</a>
         <a id="logado" href="/login">Login</a>
         <div class="menu-container" id="container-logoutID">
           <a class="button_verde" id="link_menu" href="cadastrar_usuario">Registrar</a>
@@ -63,11 +63,11 @@
     <!-- ###### Formulario de presquisa INICIO -->
     <form action="{{url_for('buscar_produtos')}}" methods="GET" class="buscar">
       <label for="nome_produto">Buscar por: </label>
-      <input id="placeholder" type="text" name="nome_produto" placeholder="Nome Produto">
+      <input id="nome_produto" class="placeholder" type="text" name="nome_produto" placeholder="Nome Produto">
 
       <label for="tipo_produto">Tipo: </label>
-      <select name="tipo_produto">
-        <option id="placeholder" value="">Todos</option>
+      <select id="tipo_produto" name="tipo_produto">
+        <option class="placeholder tipo_produto" value="">Todos</option>
         <option value="Doação">Doação</option>
         <option value="Troca">Troca</option>
       </select>
@@ -85,19 +85,19 @@
     {% if produtos %}
     {% for produto in produtos %}
     <!-- loop percorrer produtos cadastrados no bancod dados -->
-    <div class="containner_item">
+    <div data-js="containner_produto" class="containner_item">
 
-      <div class="containner_img"> <!-- area para segurar as imagens,  -->
+      <div data-js="containner_img" class="containner_img"> <!-- area para segurar as imagens,  -->
         <!-- class carrocel, visivel invisivel sera usadas para transição de imagens pelo javaScrip -->
         <!-- class gridmenor usada para setar configuração das imagem que ficam no container item, configura tamanhos 
   para não estoura-->
-        <img data-js="carrossel" class="carrossel  visivel gridmenor" src="{{ produto.imagem1 }}" alt="Imagem 1">
-        <img data-js="carrossel" class="carrossel invisivel gridmenor" src="{{ produto.imagem2 }}" alt="Imagem 2">
-        <img data-js="carrossel" class="carrossel invisivel gridmenor" src="{{ produto.imagem3 }}" alt="Imagem 3">
+        <img data-js="carrossel_img" class="carrossel  visivel gridmenor" src="{{ produto.imagem1 }}" alt="Imagem 1">
+        <img data-js="carrossel_img" class="carrossel invisivel gridmenor" src="{{ produto.imagem2 }}" alt="Imagem 2">
+        <img data-js="carrossel_img" class="carrossel invisivel gridmenor" src="{{ produto.imagem3 }}" alt="Imagem 3">
 
 
         <div class="button_center"> <!-- area dos botoes volta e avançar  usado para troca as imagens na tela-->
-          <button data-js="button_previus" class="button previous"><img src="/static/imagens/pag/previous_icon.svg" alt="Imagem anterior"></button>
+          <button data-js="button_prev" class="button previous"><img src="/static/imagens/pag/previous_icon.svg" alt="Imagem anterior"></button>
 
           <button data-js="button_next" class="button next"><img src="/static/imagens/pag/next_icon.svg" alt="Imagem anterior"></button> <!-- FIM area dos botoes -->
         </div>
@@ -129,6 +129,7 @@
   <!--variaves para serem usadas pelo javaScript-->
   <div id="container_dados_user" data-nome-usuario="{{nome_usuario}}"></div>
   <script src="{{url_for('static', filename='script_page.js')}}"></script>
+  <script src="{{url_for('static', filename='slide.js')}}"></script>
 
 </body>
 
