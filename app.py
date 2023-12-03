@@ -185,6 +185,44 @@ def listar_produtos():
     
     return render_template('listar_produtos.html', usuario=current_user, produtos=produtos)
 
+#rota para exlusão de produtos cadastrados
+@app.route('/excluir_item/<int:id>', methods=['GET', 'POST'])
+@login_required
+def excluir_item(id):
+    #retonar o produto, se não achar retonar um erro 404 pag
+    produto = Produto.query.get_or_404(id)
+
+    #verifica se o produto realmente corresponde ao usuario
+    if produto.usuario == current_user:   
+        db.session.delete(produto)
+        db.session.commit()        
+    else:
+        #'se não' gera mensagem de erro
+        print("erro(403)")
+
+    return redirect(url_for('listar_produtos'))
+
+
+@app.route('/buscar_produtos', methods=['GET'])
+def buscar_produtos():
+    #obte parametros
+    nome_produto = request.args.get('nome_produto', '')
+    tipo_produto = request.args.get('tipo_produto', '')
+
+    #buscando no bando de dados
+    produtos = Produto.query.filter(
+        Produto.nome_produto.ilike(f"%{nome_produto}"),
+        Produto.tipo_produto.ilike(f"%{tipo_produto}")
+    ).all()
+    """
+    A função ilike é usada para realizar uma pesquisa de substring insensível a maiúsculas e minúsculas no banco de dados.
+    """
+
+    # return render_template('listar_produtos.html',usuario=current_user, produtos=produtos)
+    return render_template('index.html', nome_usuario=usuariologado(current_user), produtos=produtos)
+
+
+
 # Executa o aplicativo Flask apenas se este script estiver sendo executado diretamente.
 if __name__ == '__main__':
     app.run(debug=True)

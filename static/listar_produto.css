@@ -4,6 +4,8 @@
   justify-content: center;
   gap: 30px;
   justify-items: center;
+  /* background: #ffffff; */
+  padding: 10px 0;
   /* Configuração da seção que faz a listagem de todos os produtos, 
   configurações de grid */
 }
@@ -36,7 +38,7 @@
 
 .carrossel {
   display: none;
-  /*As imagem que contem essa classe não ocultadas do flux da tela*/
+  /*As imagem que contem essa classe sao ocultadas do flux da tela*/
 }
 .visivel {
   display: initial;

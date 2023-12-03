@@ -39,15 +39,15 @@ body {
   width: 1000px;
   /* background: rgba(255, 0, 0, 0.322); */
   display: flex;
-  position: fixed;
-  z-index: -1;
   align-items: center;
+  /* position: fixed; */
+  /* z-index: -1; */
   /* margin: 0 auto; */
   gap: 50px;
-  top: 100px;
+  /* top: 100px; */
 }
 .imagem_fundo_left {
-  max-width: 480px;
+  max-width: 460px;
 }
 
 .texto_banner {

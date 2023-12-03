@@ -55,16 +55,26 @@
 
 
 
-
+  <!-- css index_style_head.css edita a seção de pesquisa -->
   <div class="pesquisa" id="classificados"> <!--Implementar funcionalidade de pesquisar por nome-->
-    <h1 style="text-align: center; padding: 15px ;">Classificados</h1><!--Estilo aplicado na tag para centralizar e espaço interno do titulo titulo-->
 
-    <!-- <form action="" methods="POST">
-      <label for="pesquisar"></label>
-      <input id="pesquisar" type="text" name="pesquisar" placeholder="Pesquisa">
+    <h1>Classificados</h1><!--titulo da seção -->
+
+    <!-- ###### Formulario de presquisa INICIO -->
+    <form action="{{url_for('buscar_produtos')}}" methods="GET" class="buscar">
+      <label for="nome_produto">Buscar por: </label>
+      <input id="placeholder" type="text" name="nome_produto" placeholder="Nome Produto">
+
+      <label for="tipo_produto">Tipo: </label>
+      <select name="tipo_produto">
+        <option id="placeholder" value="">Todos</option>
+        <option value="Doação">Doação</option>
+        <option value="Troca">Troca</option>
       </select>
-    </form> -->
-    <!-- parte de busca retirada , ainda em desenvolvimento -->
+      <input type="submit" value="Buscar">
+
+    </form>
+    <!-- ###### Formulario de pesquisa FIM ########################################-->
   </div>
 
 
@@ -110,7 +120,7 @@
     {% endfor %}
     {% else %}
     <!-- Mensagem exibida quando não há produtos cadastrados -->
-    <p>Nenhum produto cadastrado.</p>
+    <p><strong> Nenhum produto encontrado.</strong></p>
     {% endif %}
   </section><!-- fim da seção lista de produtos-->
 

@@ -45,6 +45,7 @@
 
   <h1 style="text-align: center;">Meus itens Online</h1>
 
+
   <section class="list_produtos"> <!-- Inicio da seção lista de produtos-->
     {% if produtos %}
     {% for produto in produtos %}
@@ -77,7 +78,8 @@
 
       <p class="paragrafo_grid_menor descricao_produto">{{ produto.descricao_produto }}</p>
       <!-- criar botao para remover item  -->
-      <a class="button_templete_cor  click_hover" target="_blank">Remover</a>
+      <a class="button_templete_cor  click_hover" href="{{ url_for('excluir_item', id=produto.id) }}">Remover</a>
+      <!-- <a class="button_templete_cor  click_hover" target="_blank">Remover</a> -->
 
     </div>
 
