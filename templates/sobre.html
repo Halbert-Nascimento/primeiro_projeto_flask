@@ -1,0 +1,123 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sobre-Nós</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='sobre.css') }}">
+  <!--Configuração navegador de links estilização externa-->
+
+</head>
+
+<body>
+  <header>
+    <div class="top">
+      <a href="/">
+        <h1 id="nome_logo">EcoSwap</h1>
+      </a>
+      <nav> <!--Menu de navegação com estilo hamburguer-->
+        <a href="#classificados">Classificados</a>
+        <!-- <a href="">Preservação</a> -->
+        <a href="/sobre">Sobre</a>
+        <a id="logado" href="/login">Login</a>
+        <div class="menu-container" id="container-logoutID">
+          <a class="button_verde" id="link_menu" href="cadastrar_usuario">Registrar</a>
+          <div class="submenu">
+            <a href="/perfil">Perfil</a>
+            <a href="/cadastrar_produto">Cadastrar Item</a>
+            <a href="/listar_produtos">Listar Produtos</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+          </div>
+        </div>
+      </nav>
+
+
+    </div>
+  </header>
+
+  <main>
+    <section class="sobre flex">
+      <div class="_left">
+        <h2>Promovendo a Sustentabilidade através da Troca e Doação</h2>
+        <p>
+          Bem-vindo à <Strong>EcoSwap</Strong>, um espaço dedicado à transformação positiva através da troca e doação. Acreditamos no poder coletivo de mudar o mundo, começando pela nossa comunidade. Nossa missão é criar um ambiente onde a sustentabilidade seja mais do que uma ideia; seja um estilo de vida.
+          <!-- <a class="link" href="/login">Faça parte</a> -->
+        </p>
+      </div>
+
+      <img src="/static/imagens/pag/doacao.jpg" alt="doação salva vidas">
+    </section>
+
+    <section class="flex">
+
+      <img src="/static/imagens/pag/comunidade_apoio.jpg" alt="">
+      <div class="quem_somos _right">
+        <h3>Quem Somos:</h3>
+        <p>
+          Somos uma comunidade apaixonada pela ideia de reduzir o desperdício e promover a reutilização. Através da troca e doação, buscamos criar uma rede de apoio e colaboração para construir um futuro mais verde e consciente.
+        </p>
+      </div>
+    </section>
+
+    <section class="flex">
+      <div class="o_que_fazemos _right">
+        <h3>O Que Fazemos:</h3>
+        <p>
+          Facilitamos a troca inteligente e a doação generosa. Ao proporcionar um espaço para compartilhar itens excedentes, estamos construindo uma economia circular e incentivando um consumo mais responsável. Acreditamos que cada troca e doação é um passo em direção a um mundo mais sustentável.
+        </p>
+      </div>
+      <img src="/static/imagens/pag/facilitamos.jpg" alt="">
+
+    </section>
+
+    <section class="pq_importa flex">
+      <img src="/static/imagens/pag/doacao_salva_vidas.jpg" alt="doação salva vidas">
+      <div class="_right">
+        <h3>Por Que Importa:</h3>
+        <p>
+          Vivemos em um momento crucial em que as escolhas individuais têm um impacto global. Ao participar da troca e doação, você está contribuindo para a preservação de recursos, a redução do desperdício e a construção de uma comunidade mais conectada.
+        </p>
+      </div>
+    </section>
+
+    <section class="flex">
+      <div class="_left">
+        <h3>Junte-se a Nós:</h3>
+        <p>
+          Faça parte dessa jornada sustentável. Explore nosso espaço virtual, participe das trocas, e descubra como pequenas ações podem causar grandes impactos. Unidos, podemos criar um futuro onde a generosidade e a sustentabilidade se encontram.
+        </p>
+      </div>
+      <img src="/static/imagens/pag/junte_se.jpg" alt="">
+
+
+    </section>
+  </main>
+
+
+
+
+
+
+
+  <div id="container_dados_user" data-nome-usuario="{{nome_usuario}}"></div>
+  <script src="{{url_for('static', filename='script_page.js')}}"></script>
+  <script src="{{url_for('static', filename='slide.js')}}"></script>
+
+  <footer>
+    <div>
+      <a href="https://github.com/Halbert-Nascimento/primeiro_projeto_flask.git"><img class="svg" src="/static/imagens/pag/github.svg" alt="github"></a>
+      <img class="svg" src="/static/imagens/pag/instagram.svg" alt="instagran">
+      <img class="svg" src="/static/imagens/pag/youtube.svg" alt="youtube">
+
+    </div>
+
+    <p class="roda_pe">&copy 2023 Direitos Reservados</p>
+  </footer>
+</body>
+
+</html>

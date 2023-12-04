@@ -222,6 +222,11 @@ def buscar_produtos():
     # return render_template('listar_produtos.html',usuario=current_user, produtos=produtos)
     return render_template('index.html', nome_usuario=usuariologado(current_user), produtos=produtos)
 
+@app.route('/sobre')
+def sobre():
+    return render_template('sobre.html', nome_usuario=usuariologado(current_user))
+    # renderiza a pagina com as informações de usuario e mensagem passadas,
+
 
 
 # Executa o aplicativo Flask apenas se este script estiver sendo executado diretamente.
