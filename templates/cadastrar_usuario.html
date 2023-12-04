@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='index_style_head.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='cadastro_usuario.css') }}">
   <!--Configuração navegador de links estilização externa-->
 
 </head>
@@ -21,7 +22,7 @@
       </a>
       <nav>
         <a href="/">Página Inicial</a>
-        <a href="">Sobre</a>
+        <a href="/sobre">Sobre</a>
         <a id="logado" href="/login">Login</a>
         <div class="menu-container">
           <a class="button_verde" id="link_menu" href="cadastrar_usuario">Registrar</a>
@@ -40,30 +41,53 @@
 
 
   </header>
+  <div class="cadastro">
+    <img class="logo" src="/static/imagens/pag/Logo.png" alt="">
+    <h2>Registar Conta</h2>
+    <form method="POST" action="{{url_for('cadastrar_usuario')}}">
+      <!-- <label for="nome">Nome:</label> -->
+      <input class="entrada" type="text" name="nome" placeholder="Nome Completo*" required><br><br>
 
-  <h2>Adicionar novo usuario</h2>
-  <form method="POST" action="{{url_for('cadastrar_usuario')}}">
-    <label for="nome">Nome:</label>
-    <input type="text" name="nome" required><br><br>
+      <!-- <label for="email">Email:</label> -->
+      <input class="entrada" type="email" name="email" placeholder="E-mail*" required><br><br>
 
-    <label for="email">Email:</label>
-    <input type="email" name="email" required><br><br>
+      <!-- <label for="senha">Senha:</label> -->
+      <input class="entrada" type="password" name="senha" placeholder="Senha*" required><br><br>
 
-    <label for="senha">Senha:</label>
-    <input type="password" name="senha" required><br><br>
+      <!-- <label for="telefone">Telefone:</label> -->
+      <input class="entrada" type="number" name="telefone" placeholder="Telefone*" required><br>
+      <p class="small">Bem-vindo ao EcoSwap, o seu espaço para troca e doação! Ao cadastrar um item, você está contribuindo para uma comunidade de compartilhamento sustentável.</p>
 
-    <label for="telefone">Telefone:</label>
-    <input type="number" name="telefone" required><br><br>
 
-    <input type="submit" value="cadastrar usuario"><br>
-  </form>
+      <input type="checkbox" class="checbox" required> <span class="_checkbox"> Eu Concordo com <a href=""> Termos de Uso</a> *</span>
+      <br>
 
-  <div class="explicao">
-    <p>Bem-vindo ao EcoSwap, o seu espaço para troca e doação! Ao cadastrar um item, você está contribuindo para uma comunidade de compartilhamento sustentável.</p>
+      <input type="checkbox" class="checbox" required> <span class="_checkbox"> Eu Concordo com <a href=""> política de privacidade</a> * </span>
 
-    <p>Lembre-se de que seu número de telefone e email serão compartilhados apenas com pessoas interessadas no seu item. Este é um serviço exclusivo de troca e doação, e todas as conversas são direcionadas para plataformas externas de mensagens.</p>
 
-    <p>Sua privacidade é importante para nós. Se tiver alguma dúvida sobre como suas informações são tratadas, consulte nossa política de privacidade.</p>
+      <input class="entrada _submit" type="submit" value="Criar Conta"><br>
+    </form>
+
+  </div>
+  <span id="erro">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+  </span>
+
+
+
+  <div class="explicacao">
+
+    <p id="termo_uso">Lembre-se de que seu número de telefone e email serão compartilhados com pessoas interessadas no seu item. Este é um serviço exclusivo de troca e doação, e todas as conversas são direcionadas para plataformas externas de mensagens. <br><br>
+
+      Sua privacidade é importante para nós. Se tiver alguma dúvida sobre como suas informações são tratadas, consulte nossa política de privacidade.</p>
 
   </div>
 

@@ -92,17 +92,25 @@ def cadastrar_usuario():
         senha = request.form['senha']
         telefone = request.form['telefone']
         # imagem_perfil = request.form['imagem_perfil']
+        imagem_perfil = 'static/imagens/pag/ft_perfil_vazio.svg'
 
         #criando uma instacia do modelo Usuario
-        novo_usuario = Usuario(nome=nome, email=email, senha=senha, telefone =telefone )
+        novo_usuario = Usuario(nome=nome, email=email, senha=senha, telefone =telefone, imagem_perfil = imagem_perfil )
 
+        try:        
+            db.session.add(novo_usuario) # adicionando novo usuario ao DB
+            db.session.commit() # salva as informações no Db
+            flash("Usuario cadastrado com sucesso") #mensagem pra debug
+            return redirect(url_for('login')) # redireciona para pagina de login apos cadastro
         
-        db.session.add(novo_usuario) # adicionando novo usuario ao DB
-        db.session.commit() # salva as informações no Db
+        except :
+            db.session.rollback()
+            flash("Erro: Email ja cadastrado! ")
+            return render_template('cadastrar_usuario.html') # renderiza a pagina cadastro 
+        
 
-        print("Usuario cadastrado com sucesso") #mensagem pra debug
-        return redirect(url_for('login')) # redireciona para pagina de login apos cadastro
     return render_template('cadastrar_usuario.html') # renderiza a pagina cadastro usuario se a solicitação for get
+
 
 # Rota de perfil 
 @app.route('/perfil')
