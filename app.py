@@ -92,7 +92,7 @@ def cadastrar_usuario():
         senha = request.form['senha']
         telefone = request.form['telefone']
         # imagem_perfil = request.form['imagem_perfil']
-        imagem_perfil = 'static/imagens/pag/ft_perfil_vazio.svg'
+        imagem_perfil = 'static/imagens/pag/foto_perfil_salvePlanet.jpg'
 
         #criando uma instacia do modelo Usuario
         novo_usuario = Usuario(nome=nome, email=email, senha=senha, telefone =telefone, imagem_perfil = imagem_perfil )
