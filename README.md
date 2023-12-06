@@ -1,42 +1,38 @@
-# primeiro_projeto_flask
+# EcoSwap - Sistema de Cadastro de Produtos Sustentáveis
 
-# comando git
+## Descrição do Projeto
 
-git init: Inicia um novo repositório Git no diretório atual.
+O EcoSwap é um sistema que permite o cadastro de produtos sustentáveis para troca ou doação. Com foco na preservação do meio ambiente e na promoção da reciclagem, os usuários podem cadastrar itens, visualizar produtos disponíveis e contribuir para um ambiente mais sustentável.
 
-git clone [URL]: Clona um repositório remoto para o seu ambiente local.
+## Funcionalidades
 
-git add [arquivo]: Adiciona alterações ao próximo commit.
+- Cadastro de produtos com nome, descrição e imagens.
+- Opção de escolher entre troca ou doação.
+- Visualização de produtos disponíveis.
+- Interface intuitiva e responsiva.
 
-git commit -m "Mensagem": Registra as alterações adicionadas com uma mensagem descritiva.
+## Tecnologias Utilizadas
 
-git pull: Atualiza o repositório local com as alterações mais recentes do repositório remoto.
+- Python
+- Flask (framework web)
+- MySQL (banco de dados)
+- HTML, CSS, JavaScript (front-end)
 
-git push: Envia suas alterações locais para o repositório remoto.
+## Como Executar o Projeto
 
-git branch: Lista as branches locais; a branch atual é destacada.
+1. Clone o repositório: `git clone https://github.com/Halbert-Nascimento/primeiro_projeto_flask.git`
+2. Instale as dependências: `pip install -r requirements.txt`
+3. Configure o banco de dados MySQL.
+4. Execute o aplicativo: `python app.py`
 
-git checkout [branch]: Muda para a branch especificada.
+## Contribuições
 
-git merge [branch]: Combina as alterações da branch especificada na branch atual.
+Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas (issues) ou enviar pull requests.
 
-git status: Exibe o estado atual do seu repositório, incluindo arquivos modificados e pendentes.
+## Autor
 
-# comando para anbiente virtual python venv
+Halbert Nascimento
 
-1. `python -m venv nome_do_ambiente`: Cria um novo ambiente virtual com o nome especificado.
+## Licença
 
-2. `source nome_do_ambiente/bin/activate` (Linux/Mac) ou `
-nome_do_ambiente\Scripts\activate` (Windows): Ativa o ambiente virtual.
-
-3. `deactivate`: Desativa o ambiente virtual atual.
-
-4. `pip install pacote`: Instala um pacote Python no ambiente virtual.
-
-5. `pip freeze > requirements.txt`: Salva as dependências do ambiente virtual em um arquivo de requisitos.
-
-6. `pip install -r requirements.txt`: Instala as dependências a partir de um arquivo de requisitos.
-
-7. `pip list`: Lista os pacotes instalados no ambiente virtual.
-
-8. `python -m venv --clear nome_do_ambiente`: Cria um ambiente virtual limpo, removendo pacotes existentes.
+Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
